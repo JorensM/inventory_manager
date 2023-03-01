@@ -12,3 +12,35 @@ Stack trace:
 #9 {main}
   thrown in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php on line 308
 
+2023-03-01T12:36:07+00:00 CRITICAL Uncaught Error: Call to undefined function get_editable_roles() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php:278
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): update_custom_roles('')
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-settings.php(617): do_action('init')
+#4 C:\xampp2\htdocs\inventory_manager\wp-config.php(96): require_once('C:\\xampp2\\htdoc...')
+#5 C:\xampp2\htdocs\inventory_manager\wp-load.php(50): require_once('C:\\xampp2\\htdoc...')
+#6 C:\xampp2\htdocs\inventory_manager\wp-admin\admin.php(34): require_once('C:\\xampp2\\htdoc...')
+#7 C:\xampp2\htdocs\inventory_manager\wp-admin\users.php(11): require_once('C:\\xampp2\\htdoc...')
+#8 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php on line 278
+
+2023-03-01T12:43:00+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($function) must be a valid callback, function "custom_css" not found or invalid function name in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php:308
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-admin\admin-header.php(163): do_action('admin_head')
+#3 C:\xampp2\htdocs\inventory_manager\wp-admin\users.php(528): require_once('C:\\xampp2\\htdoc...')
+#4 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php on line 308
+
+2023-03-01T12:46:27+00:00 CRITICAL Uncaught Error: Object of class WP_Screen could not be converted to string in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php:267
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): custom_js('')
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-admin\admin-header.php(163): do_action('admin_head')
+#4 C:\xampp2\htdocs\inventory_manager\wp-admin\users.php(528): require_once('C:\\xampp2\\htdoc...')
+#5 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php on line 267
+
