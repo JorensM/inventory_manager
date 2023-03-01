@@ -1,0 +1,14 @@
+2023-03-01T11:31:18+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($function) must be a valid callback, function "mytheme_woo_add_custom_fields" not found or invalid function name in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php:308
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\views\html-product-data-general.php(206): do_action('woocommerce_pro...')
+#3 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\class-wc-meta-box-product-data.php(42): include('C:\\xampp2\\htdoc...')
+#4 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\views\html-product-data-panel.php(52): WC_Meta_Box_Product_Data::output_tabs()
+#5 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\class-wc-meta-box-product-data.php(33): include('C:\\xampp2\\htdoc...')
+#6 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\template.php(1409): WC_Meta_Box_Product_Data::output(Object(WP_Post), Array)
+#7 C:\xampp2\htdocs\inventory_manager\wp-admin\edit-form-advanced.php(688): do_meta_boxes(Object(WP_Screen), 'normal', Object(WP_Post))
+#8 C:\xampp2\htdocs\inventory_manager\wp-admin\post-new.php(75): require('C:\\xampp2\\htdoc...')
+#9 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php on line 308
+
