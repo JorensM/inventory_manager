@@ -279,12 +279,23 @@ function woo_remove_fields() {
             }
         </style>
   <?php
+    if(!user_can(wp_get_current_user(), "price")){
+        ?>  
+            <style>
+                ._regular_price_field{
+                    display: none !important;
+                }
+            </style>
+        <?php
+    }
 }
 add_action('admin_head', 'woo_remove_fields');
 
 //Add custom Javascript
 function custom_js() {
     $page_id = get_current_screen()->id;
+
+    echo $page_id;
 
     //Custom style for users page
     if($page_id === "users"){
@@ -293,6 +304,103 @@ function custom_js() {
                 console.log("test");
                 document.getElementById("posts").innerHTML = "Products";
             </script>
+        <?php
+    }
+    else if($page_id === "product"){
+        ?>
+
+            <script>
+
+                //Generate title based on entered information
+                function generateTitle(input_element){
+                    const brand_info = document.getElementById("_brand_info").value;
+                    const model_info = document.getElementById("_model_info").value;
+                    const year = document.getElementById("_year_field").value;
+                    const color = document.getElementById("_color_field").value;
+
+                    const title = `${brand_info} ${model_info} ${year} ${color}`;
+
+                    input_element.value = title;
+                }
+
+                const form = document.getElementById("post");
+
+                const categories_pop = document.getElementById("product_cat-pop");
+                const categories_all = document.getElementById("product_cat-all");
+
+                const inputs_pop = categories_pop.querySelectorAll("input[type='checkbox']");
+                const inputs_all = categories_all.querySelectorAll("input[type='checkbox']");
+
+                const title_input = document.getElementById("title");
+                const title_div = document.getElementById("titlediv");
+                
+
+                //Make title field required
+                title_input.required = true;
+
+                //Add "generate title" button
+                title_div.insertAdjacentHTML("afterend", `
+                    <div
+                        style='
+                            display: flex;
+                            justify-content: flex-end
+                        '
+                    >
+                        <button 
+                            type='button'
+                            class='button button-secondary'
+                            onclick='generateTitle(title_input)'
+                        >
+                            Generate title
+                        </button>
+                    </div>
+                    
+                `);
+
+
+
+                //Prevent "are you sure you want to leave this page" popup
+                window.addEventListener('beforeunload', function (event) {
+                    event.stopImmediatePropagation();
+                });
+
+                //On form submit
+                form.addEventListener("submit", (e) => {
+                    e.preventDefault();
+
+
+                    //Check if category is specified, and cancel form submission if false
+                    let has_category = false;
+
+                    for(let i = 0; i < inputs_pop.length; i++) {
+                        let item = inputs_pop[i];
+                        if(item.checked){
+                            has_category = true;
+                            break;
+                        }
+                    }
+                    
+                    if(!has_category){
+                        for(let i = 0; i < inputs_all.length; i++) {
+                            let item = inputs_all[i];
+                            if(item.checked){
+                                has_category = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if(has_category){
+                        form.submit();
+                    }else{
+                        alert("Please select category!");
+                    }
+
+                    
+                    
+                })
+            </script>
+
         <?php
     }
 
@@ -326,7 +434,144 @@ add_filter( 'product_type_options', "woo_remove_type_options");
 //Update roles
 function update_custom_roles() {
 
-    add_role( 'regular', 'Regular', array( 'read' => true, 'level_0' => true ) );
+    add_role( 'regular', 'Regular', array( 
+        'read' => true, 
+        "view_admin_dashboard" => true,
+        "price" => false,
+    ));
+
+    $regular_caps = [
+        "edit_themes",
+        "activate_plugins",
+        "edit_plugins",
+        "edit_users",
+        "edit_files",
+        "manage_options",
+        "moderate_comments",
+        "manage_categories",
+        "manage_links",
+        "upload_files",
+        "import",
+        "unfiltered_html",
+        "edit_posts",
+        "edit_others_posts",
+        "edit_published_posts",
+        "publish_posts",
+        "edit_pages",
+        "read",
+        "level_10",
+        "level_9",
+        "level_8",
+        "level_7",
+        "level_6",
+        "level_5",
+        "level_4",
+        "level_3",
+        "level_2",
+        "level_1",
+        "level_0",
+        "edit_others_pages",
+        "edit_published_pages",
+        "publish_pages",
+        "delete_pages",
+        "delete_others_pages",
+        "delete_published_pages",
+        "delete_posts",
+        "delete_others_posts",
+        "delete_published_posts",
+        "delete_private_posts",
+        "edit_private_posts",
+        "read_private_posts",
+        "delete_private_pages",
+        "edit_private_pages",
+        "read_private_pages",
+        "delete_users",
+        "create_users",
+        "unfiltered_upload",
+        "edit_dashboard",
+        "update_plugins",
+        "delete_plugins",
+        "install_plugins",
+        "update_themes",
+        "install_themes",
+        "update_core",
+        "list_users",
+        "remove_users",
+        "promote_users",
+        "edit_theme_options",
+        "delete_themes",
+        "export",
+        "manage_woocommerce",
+        "view_woocommerce_reports",
+        "edit_product",
+        "read_product",
+        "delete_product",
+        "edit_products",
+        "edit_others_products",
+        "publish_products",
+        "read_private_products",
+        "delete_products",
+        "delete_private_products",
+        "delete_published_products",
+        "delete_others_products",
+        "edit_private_products",
+        "edit_published_products",
+        "manage_product_terms",
+        "edit_product_terms",
+        "delete_product_terms",
+        "assign_product_terms",
+        "edit_shop_order",
+        "read_shop_order",
+        "delete_shop_order",
+        "edit_shop_orders",
+        "edit_others_shop_orders",
+        "publish_shop_orders",
+        "read_private_shop_orders",
+        "delete_shop_orders",
+        "delete_private_shop_orders",
+        "delete_published_shop_orders",
+        "delete_others_shop_orders",
+        "edit_private_shop_orders",
+        "edit_published_shop_orders",
+        "manage_shop_order_terms",
+        "edit_shop_order_terms",
+        "delete_shop_order_terms",
+        "assign_shop_order_terms",
+        "edit_shop_coupon",
+        "read_shop_coupon",
+        "delete_shop_coupon",
+        "edit_shop_coupons",
+        "edit_others_shop_coupons",
+        "publish_shop_coupons",
+        "read_private_shop_coupons",
+        "delete_shop_coupons",
+        "delete_private_shop_coupons",
+        "delete_published_shop_coupons",
+        "delete_others_shop_coupons",
+        "edit_private_shop_coupons",
+        "edit_published_shop_coupons",
+        "manage_shop_coupon_terms",
+        "edit_shop_coupon_terms",
+        "delete_shop_coupon_terms",
+        "assign_shop_coupon_terms"
+    ];
+
+    $regular_role = get_role("regular");
+    $regular_role->add_cap("view_admin_dashboard", true);
+    $regular_role->add_cap("edit_posts", true);
+    $regular_role->add_cap("price", false);
+    $regular_role->add_cap("manage_woocommerce", true);
+    $regular_role->add_cap("level_10", true);
+    $regular_role->add_cap("read_product", true);
+    $regular_role->add_cap("view_woocommerce_reports", true);
+
+    foreach($regular_caps as $cap){
+        $regular_role->add_cap($cap, true);
+    }
+
+    $admin_role = get_role("administrator");
+
+    $admin_role->add_cap("price", true);
 
     //Roles to remove
     $to_remove = [
