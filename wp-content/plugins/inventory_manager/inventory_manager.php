@@ -46,9 +46,28 @@ function remove_menu_items(){
 
     ];
 
+    $submenus_to_remove = [
+        ['edit.php?post_type=product', 'edit-tags.php?taxonomy=product_tag&post_type=product'],
+        ['edit.php?post_type=product', 'product_attributes'],
+        ['edit.php?post_type=product', 'product-reviews']
+    ];
+
+    //echo "test";
+
+    // echo "<pre>";
+    //     print_r(wp_get_nav_menu_items("edit.php?post_type=product"));
+    // echo "</pre>";
+
+    
+
     foreach($to_remove as $item){
         remove_menu_page($item);
     }
+
+    foreach($submenus_to_remove as $item){
+        remove_submenu_page($item[0], $item[1]);
+    }
+
 }
 add_action( 'admin_init', "remove_menu_items" );
 
@@ -76,6 +95,7 @@ function woo_product_custom_fields(){
                 'label'       => __( 'Brand Info', $domain ),
                 'placeholder' => '',
                 'desc_tip'    => false,
+                'custom_attributes' => array( 'required' => 'required' ),
                 // 'description' => __( "Enter Brand info", $domain )
             )
         );
@@ -87,6 +107,7 @@ function woo_product_custom_fields(){
                 'label'       => __( 'Model info', $domain ),
                 'placeholder' => '',
                 'desc_tip'    => false,
+                'custom_attributes' => array( 'required' => 'required' ),
                 // 'description' => __( "Enter Model info", $domain )
             )
         );
@@ -252,6 +273,10 @@ function woo_remove_fields() {
             {
                 display: none !important; 
             }
+
+            li:has(> a[href="edit-tags.php?taxonomy=product_tag&post_type=product"]){
+                display: none !important;
+            }
         </style>
   <?php
 }
@@ -270,6 +295,12 @@ function custom_js() {
             </script>
         <?php
     }
+
+    ?>
+        <script>
+            //document.querySelector("")
+        </script>
+    <?php
     
         
   
