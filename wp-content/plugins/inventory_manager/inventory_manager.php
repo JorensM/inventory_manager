@@ -34,10 +34,12 @@ options-general.php
 //Remove unneeded menu items from admin
 function remove_menu_items(){
 
+    global $submenu;
+
     $to_remove = [
         "separator1",
         "separator2",
-        "index.php",
+        //"index.php",
         "edit.php",
         "edit.php?post_type=page",
         "edit-comments.php",
@@ -51,16 +53,20 @@ function remove_menu_items(){
 
     ];
 
+    /*
+        List of submenus to remove.
+        Some of the WooCommerce submenus don't get removed even if they're added to this list.
+        The workaround was to hide these items with CSS in the custom_css() function
+    */
     $submenus_to_remove = [
-        ['edit.php?post_type=product', 'edit-tags.php?taxonomy=product_tag&post_type=product'],
-        ['edit.php?post_type=product', 'product_attributes'],
-        ['edit.php?post_type=product', 'product-reviews']
+        ["edit.php?post_type=product", "edit-tags.php?taxonomy=product_tag&post_type=product"],
+        ["edit.php?post_type=product", "product_attributes"],
+        ["edit.php?post_type=product", "product-reviews"],
+        ["index.php", "update-core.php"],
     ];
 
-    //echo "test";
-
     // echo "<pre>";
-    //     print_r(wp_get_nav_menu_items("edit.php?post_type=product"));
+    //     print_r($submenu["edit.php?post_type=product"]);
     // echo "</pre>";
 
     
@@ -80,8 +86,12 @@ add_action( 'admin_init', "remove_menu_items" );
 function change_menu_order( $menu_ord ) {
     if ( !$menu_ord ) return true;
 
+    //The order in which the items should appear
     return array(
-        'users.php', // Dashboard
+        "index.php", // Dashboard
+        "edit.php?post_type=product", //Products
+        "users.php", // Users
+        
     );
 }
 add_filter( 'custom_menu_order', 'change_menu_order', 10, 1 );
@@ -261,7 +271,7 @@ function woo_save_product_fields( $post_id ){
 add_action( 'woocommerce_process_product_meta', 'woo_save_product_fields' );
 
 //Remove unneeded Product fields
-function woo_remove_fields() {
+function custom_css() {
     ?>
         <style>
             #postdivrich,
@@ -279,7 +289,8 @@ function woo_remove_fields() {
                 display: none !important; 
             }
 
-            li:has(> a[href="edit-tags.php?taxonomy=product_tag&post_type=product"]){
+            li:has(> a[href="edit-tags.php?taxonomy=product_tag&post_type=product"]),
+            li:has(> a[href="edit-tags.php?taxonomy=product_cat&post_type=product"]){
                 display: none !important;
             }
         </style>
@@ -294,7 +305,7 @@ function woo_remove_fields() {
         <?php
     }
 }
-add_action('admin_head', 'woo_remove_fields');
+add_action('admin_head', 'custom_css');
 
 //Add custom Javascript
 function custom_js() {
