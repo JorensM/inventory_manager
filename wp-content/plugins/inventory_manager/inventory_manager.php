@@ -8,7 +8,7 @@
     * Text Domain:       inv-mgr
 */
 
-require_once("ebayRequest.php");
+require_once("functions/generateBarcode.php");
 
 $domain = "inv-mgr";
 
@@ -29,6 +29,14 @@ options-general.php
 
 */
 
+//echo "<div style='height:200px'> </div>";
+//echo "hello";
+
+//$barcode = generateBarcode();
+
+//generateBarcode("1234", "123");
+
+//echo '<img src="data:image/png;base64,' . base64_encode($barcode) . '">';
 
 
 //Remove unneeded menu items from admin
@@ -604,3 +612,44 @@ function update_custom_roles() {
     }
 }
 add_action( 'init', 'update_custom_roles' );
+
+function render_product_barcode(){
+
+    $product = wc_get_product();
+
+    $barcode_url =  wp_upload_dir()["baseurl"] . "/" . $product->get_id() . ".png";
+
+    //$barcode_filename = wp_upload_dir()["basedir"] . "/" . $product->get_id() . "png";
+
+    $barcode_exists = false;
+
+    $file_headers = @get_headers($barcode_url);
+    if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
+        $barcode_exists = false;
+    }
+    else {
+        $barcode_exists = true;
+    } 
+
+    if($barcode_exists){
+        echo "
+            <div style='padding-left:15px'>
+                <img src='$barcode_url'>
+            </div>  
+        ";
+    }
+
+    
+}
+add_action( 'woocommerce_product_options_sku', 'render_product_barcode' );
+
+//Called when product gets created/updated
+function on_product_save($product_id){
+    $product = wc_get_product($product_id);
+
+    if($product->get_sku()){
+        generateBarcode($product->get_sku(), $product_id);
+    }
+}
+add_action( 'woocommerce_new_product', 'on_product_save', 10, 1 );
+add_action( 'woocommerce_update_product', 'on_product_save', 10, 1 );
