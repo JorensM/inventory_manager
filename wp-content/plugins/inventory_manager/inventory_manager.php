@@ -8,6 +8,27 @@
     * Text Domain:       inv-mgr
 */
 
+require_once("ebayRequest.php");
+
+$xml = '
+    <?xml version="1.0" encoding="utf-8"?>
+    <GeteBayOfficialTimeRequest xmlns="urn:ebay:apis:eBLBaseComponents">
+  <!-- (No call-specific Input fields) -->
+
+  <!-- Standard Input Fields -->
+  <ErrorLanguage>fr_FR</ErrorLanguage>
+  <MessageID> string </MessageID>
+  <Version> string </Version>
+  <WarningLevel> WarningLevelCodeType </WarningLevel>
+</GeteBayOfficialTimeRequest>
+';
+
+$res = ebayRequest("https://api.sandbox.ebay.com/ws/api.dll", $xml, "GeteBayOfficialTimeRequest");
+
+echo "<pre>";
+    print_r($res);
+echo "</pre>";
+
 $domain = "inv-mgr";
 
 /*
@@ -26,6 +47,8 @@ tools.php
 options-general.php
 
 */
+
+
 
 //Remove unneeded menu items from admin
 function remove_menu_items(){
