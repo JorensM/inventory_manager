@@ -255,6 +255,7 @@ function woo_save_product_fields( $post_id ){
 
     $field_ids = [
         "_brand_info",
+        "_model_info",
         "_year_field",
         "_handedness_field"
     ];
@@ -417,7 +418,7 @@ function custom_js() {
                     if(has_category){
                         form.submit();
                     }else{
-                        alert("Please select category!");
+                        alert("Please select a category!");
                     }
 
                     
@@ -613,13 +614,17 @@ function update_custom_roles() {
 }
 add_action( 'init', 'update_custom_roles' );
 
+generateBarcode("1234", "hello");
+
 function render_product_barcode(){
+
+    $file_ext = ".png";
 
     $product = wc_get_product();
 
-    $barcode_url =  wp_upload_dir()["baseurl"] . "/" . $product->get_id() . ".png";
+    $barcode_url =  wp_upload_dir()["baseurl"] . "/" . $product->get_id() . $file_ext;
 
-    //$barcode_filename = wp_upload_dir()["basedir"] . "/" . $product->get_id() . "png";
+    $barcode_filename = wp_upload_dir()["basedir"] . "/" . $product->get_id() . $file_ext;
 
     $barcode_exists = false;
 
@@ -633,7 +638,7 @@ function render_product_barcode(){
 
     if($barcode_exists){
         echo "
-            <div style='padding-left:15px'>
+            <div style='display: flex; align-items: center;justify-content: center'>
                 <img src='$barcode_url'>
             </div>  
         ";
@@ -648,7 +653,7 @@ function on_product_save($product_id){
     $product = wc_get_product($product_id);
 
     if($product->get_sku()){
-        generateBarcode($product->get_sku(), $product_id);
+        generateBarcode($product->get_sku(), $product_id, $product->get_title());
     }
 }
 add_action( 'woocommerce_new_product', 'on_product_save', 10, 1 );
