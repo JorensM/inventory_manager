@@ -366,6 +366,7 @@ function custom_js() {
 
                 const title_input = document.getElementById("title");
                 const title_div = document.getElementById("titlediv");
+
                 
 
                 //Make title field required
@@ -435,6 +436,54 @@ function custom_js() {
             </script>
 
         <?php
+        //Get barcode
+        $file_ext = ".png";
+
+        $product = wc_get_product();
+
+        $barcode_url =  wp_upload_dir()["baseurl"] . "/" . $product->get_id() . $file_ext;
+
+        $barcode_filename = wp_upload_dir()["basedir"] . "/" . $product->get_id() . $file_ext;
+
+        $barcode_exists = false;
+
+        $file_headers = @get_headers($barcode_url);
+        if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
+            $barcode_exists = false;
+        }
+        else {
+            $barcode_exists = true;
+        } 
+        //If barcode exists, show it
+        if($barcode_exists){
+            ?>
+                <script>
+                    const minor_publishing_div = document.getElementById("minor-publishing");
+
+                    const barcode_html = `
+                        <div 
+                            style='
+                                display: flex; 
+                                align-items: center;
+                                justify-content: center;
+                                width: 100%;
+                                padding: 16px;
+                                box-sizing: border-box;
+                            '
+                        >
+                            <img 
+                                src='<?php echo $barcode_url; ?>'
+                                style='
+                                    width: 100%;
+                                '
+                            >
+                        </div>  
+                    `
+
+                    minor_publishing_div.insertAdjacentHTML("beforeend", barcode_html);
+                </script>
+            <?php
+        }
     }
 
     ?>
@@ -622,39 +671,39 @@ function update_custom_roles() {
 }
 add_action( 'init', 'update_custom_roles' );
 
-generateBarcode("1234", "hello");
+//generateBarcode("1234", "hello");
+/* Render barcode below SKU field. deprecated */
+// function render_product_barcode(){
 
-function render_product_barcode(){
+//     $file_ext = ".png";
 
-    $file_ext = ".png";
+//     $product = wc_get_product();
 
-    $product = wc_get_product();
+//     $barcode_url =  wp_upload_dir()["baseurl"] . "/" . $product->get_id() . $file_ext;
 
-    $barcode_url =  wp_upload_dir()["baseurl"] . "/" . $product->get_id() . $file_ext;
+//     $barcode_filename = wp_upload_dir()["basedir"] . "/" . $product->get_id() . $file_ext;
 
-    $barcode_filename = wp_upload_dir()["basedir"] . "/" . $product->get_id() . $file_ext;
+//     $barcode_exists = false;
 
-    $barcode_exists = false;
+//     $file_headers = @get_headers($barcode_url);
+//     if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
+//         $barcode_exists = false;
+//     }
+//     else {
+//         $barcode_exists = true;
+//     } 
 
-    $file_headers = @get_headers($barcode_url);
-    if($file_headers[0] == 'HTTP/1.1 404 Not Found') {
-        $barcode_exists = false;
-    }
-    else {
-        $barcode_exists = true;
-    } 
-
-    if($barcode_exists){
-        echo "
-            <div style='display: flex; align-items: center;justify-content: center'>
-                <img src='$barcode_url'>
-            </div>  
-        ";
-    }
+//     if($barcode_exists){
+//         echo "
+//             <div style='display: flex; align-items: center;justify-content: center'>
+//                 <img src='$barcode_url'>
+//             </div>  
+//         ";
+//     }
 
     
-}
-add_action( 'woocommerce_product_options_sku', 'render_product_barcode' );
+// }
+//add_action( 'woocommerce_product_options_sku', 'render_product_barcode' );
 
 //Called when product gets created/updated
 function on_product_save($product_id){
