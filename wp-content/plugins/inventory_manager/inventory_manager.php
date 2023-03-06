@@ -8,7 +8,14 @@
     * Text Domain:       inv-mgr
 */
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+//error_log("hello123");
+
 require_once("functions/generateBarcode.php");
+require_once("functions/reverbCreateListing.php");
 
 $domain = "inv-mgr";
 
@@ -294,8 +301,8 @@ function custom_css() {
             #catalog-visibility,
             #post-preview,
             #edit-slug-box,
-            .misc-pub-curtime,
-            .misc-pub-visibility,
+            /* .misc-pub-curtime, */
+            /* .misc-pub-visibility, */
             .product-data-wrapper,
             ._sale_price_field,
             .linked_product_options,
@@ -454,14 +461,36 @@ function custom_js() {
 
                 //Generate title based on entered information
                 function generateTitle(input_element){
-                    const brand_info = document.getElementById("_brand_info").value;
-                    const model_info = document.getElementById("_model_info").value;
-                    const year = document.getElementById("_year_field").value;
-                    const color = document.getElementById("_color_field").value;
+                    //Add a string to an array if the string is set and not empty
+                    function addStrIfNotEmpty(str, arr){
+                        if(str && str !== ""){
+                            arr.push(str);
+                        }
+                    }
 
-                    const title = `${brand_info} ${model_info} ${year} ${color}`;
+                    let brand_info = document.getElementById("_brand_info").value;
+                    let model_info = document.getElementById("_model_info").value;
+                    let year = document.getElementById("_year_field").value;
+                    let color = document.getElementById("_color_field").value;
 
-                    input_element.value = title;
+                    // model_info = addSpaceOrEmpty(model_info);
+                    // year_info = addSpaceOrEmpty(year);
+                    // color_info = addSpaceOrEmpty(color);
+
+                    //Turn info into array of strings
+                    let title_parts = [];
+                    addStrIfNotEmpty(brand_info, title_parts);
+                    addStrIfNotEmpty(model_info, title_parts);
+                    addStrIfNotEmpty(year, title_parts);
+                    addStrIfNotEmpty(color, title_parts);
+
+                    const title = title_parts.join(" ");
+
+                    //Hide input label after generating title
+                    if(title.replaceAll(" ", "") !== "" && title !== null && title !== undefined){
+                        input_element.value = title;
+                        document.getElementById("title-prompt-text").classList.add("screen-reader-text");
+                    }
                 }
 
                 const form = document.getElementById("post");
@@ -508,7 +537,9 @@ function custom_js() {
 
                 //On form submit
                 form.addEventListener("submit", (e) => {
-                    e.preventDefault();
+                    //console.log(e);
+                    //e.preventDefault();
+                    //return;
 
 
                     //Check if category is specified, and cancel form submission if false
@@ -535,14 +566,11 @@ function custom_js() {
                         }
                     }
 
-                    if(has_category){
-                        form.submit();
-                    }else{
+                    if(!has_category){
+                        e.preventDefault();
                         alert("Please select a category!");
                     }
 
-                    
-                    
                 })
             </script>
 
@@ -842,3 +870,35 @@ function on_product_save($product_id){
 }
 add_action( 'woocommerce_new_product', 'on_product_save', 10, 1 );
 add_action( 'woocommerce_update_product', 'on_product_save', 10, 1 );
+
+$REVERB_TOKEN = "0f603718557c595e4f814f1a6325e505e58f33d2499cbb66040ee6fec55a836d";
+
+//On product publish
+function on_product_publish($new_status, $old_status, $post) {
+
+    error_log("On product publish");
+
+    global $REVERB_TOKEN;
+
+    if($new_status == 'publish' && !empty($post->ID) && in_array( $post->post_type, array( 'product') )) {
+        error_log("Product found");
+        $product = wc_get_product($post->ID);
+
+
+        $field_ids = [
+            "_brand_info",
+            "_model_info",
+            "_year_field",
+            "_handedness_field"
+        ];
+
+        $data = [
+            "make" => $product->get_meta("_brand_info"),
+            "model" => $product->get_meta("_model_info")
+        ];
+
+        reverbCreateListing($data, $REVERB_TOKEN);   
+    }
+}
+add_action('transition_post_status', 'on_product_publish', 10, 3);
+ 
