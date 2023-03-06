@@ -294,6 +294,11 @@ function custom_css() {
             .misc-pub-visibility,
             .product-data-wrapper,
             ._sale_price_field,
+            .linked_product_options,
+            .attribute_options,
+            .advanced_options,
+            .marketplace-suggestions_options,
+            .variations_options, 
             #wp-admin-bar-wp-logo,
             #wp-admin-bar-site-name,
             #wp-admin-bar-comments,
@@ -301,13 +306,15 @@ function custom_css() {
             #wp-admin-bar-new-media,
             #wp-admin-bar-new-page,
             #wp-admin-bar-new-shop_order,
-            #wp-admin-bar-new-shop_coupon
+            #wp-admin-bar-new-shop_coupon,
+            #postimagediv
             {
                 display: none !important; 
             }
 
-            li:has(> a[href="edit-tags.php?taxonomy=product_tag&post_type=product"]),
-            li:has(> a[href="edit-tags.php?taxonomy=product_cat&post_type=product"]){
+            li:has(> a[href="edit-tags.php?taxonomy=product_tag&post_type=product"])
+            /* li:has(> a[href="edit-tags.php?taxonomy=product_cat&post_type=product"]) */
+            {
                 display: none !important;
             }
         </style>
@@ -419,7 +426,10 @@ function custom_js() {
 
                     for(let i = 0; i < inputs_pop.length; i++) {
                         let item = inputs_pop[i];
-                        if(item.checked){
+                        if(item.value === "15"){
+                            console.log ("Is uncategorized");
+                        }
+                        if(item.checked && item.value !== "15"){
                             has_category = true;
                             break;
                         }
@@ -428,7 +438,7 @@ function custom_js() {
                     if(!has_category){
                         for(let i = 0; i < inputs_all.length; i++) {
                             let item = inputs_all[i];
-                            if(item.checked){
+                            if(item.checked && item.value !== "15"){
                                 has_category = true;
                                 break;
                             }
