@@ -281,8 +281,12 @@ add_action( 'woocommerce_process_product_meta', 'woo_save_product_fields' );
 
 //Remove unneeded Product fields
 function custom_css() {
+    //Store page id in a variable
+    $page_id = get_current_screen()->id;
+
     ?>
         <style>
+            /* Hide unneeded element */
             #postdivrich,
             #commentsdiv,
             #postexcerpt,
@@ -299,6 +303,8 @@ function custom_css() {
             .advanced_options,
             .marketplace-suggestions_options,
             .variations_options, 
+            .dimensions_field,
+            .shipping_class_field,
             #wp-admin-bar-wp-logo,
             #wp-admin-bar-site-name,
             #wp-admin-bar-comments,
@@ -307,7 +313,10 @@ function custom_css() {
             #wp-admin-bar-new-page,
             #wp-admin-bar-new-shop_order,
             #wp-admin-bar-new-shop_coupon,
-            #postimagediv
+            #postimagediv,
+            #tagsdiv-product_tag,
+            #contextual-help-link-wrap
+            /* #woocommerce-activity-panel */
             {
                 display: none !important; 
             }
@@ -319,6 +328,86 @@ function custom_css() {
             }
         </style>
     <?php
+
+    //Apply CSS to product page
+    if($page_id === "product"){
+        ?>
+            <style>
+                /* .metabox-prefs */
+                /* .editor-expand */
+                fieldset.metabox-prefs,
+                fieldset.editor-expand
+                {
+                    display: none !important
+                }
+
+                #wpbody{
+                    margin-top: 43px !important;
+                }
+            </style>
+        <?php
+    }
+
+    //Apply CSS to user page
+    if($page_id === "user"){
+        ?>
+            <style>
+                /* .metabox-prefs */
+                /* .editor-expand */
+                .form-field:has(* label[for="url"]),
+                tr:has(* label[for="send_user_notification"])
+                {
+                    display: none !important
+                }
+            </style>
+        <?php
+    }
+
+    //Apply CSS to profile page
+    if($page_id === "profile"){
+        ?>
+            <style>
+                .user-rich-editing-wrap,
+                .user-syntax-highlighting-wrap,
+                .user-comment-shortcuts-wrap,
+                .user-admin-bar-front-wrap,
+                .user-url-wrap,
+                .user-description-wrap,
+                #application-passwords-section,
+                #fieldset-billing,
+                #fieldset-shipping
+                {
+                    display: none !important
+                }
+            </style>
+        <?php
+    }
+
+    //Apply CSS to dashboard
+    if($page_id === "dashboard"){
+        ?>
+            <style>
+                #screen-options-link-wrap,
+                #welcome-panel,
+                #dashboard-widgets-wrap
+                {
+                    display: none !important
+                }
+            </style>
+        <?php
+    }
+
+    if($page_id === "edit-product"){
+        ?>
+            <style>
+                a[href="http://localhost/inventory_manager/wp-admin/edit.php?post_type=product&page=product_importer"]
+                {
+                    display: none !important;
+                }
+            </style>
+        <?php
+    }
+
     //Hide price field if user doesn't have 'price' permission
     if(!user_can(wp_get_current_user(), "price")){
         ?>  
@@ -339,6 +428,7 @@ function custom_css() {
             </style>
         <?php
     }
+    echo $page_id;
 }
 add_action('admin_head', 'custom_css');
 
@@ -505,6 +595,21 @@ function custom_js() {
                 </script>
             <?php
         }
+    }else if($page_id === "profile"){
+        ?>
+            <script>
+                const divs = document.getElementsByTagName("h2");
+
+                for (let x = 0; x < divs.length; x++) {
+                    const div = divs[x];
+                    const content = div.textContent.trim();
+                
+                    if (content == 'Customer billing address' || content == 'Customer shipping address') {
+                        div.style.display = 'none';
+                    }
+                }
+            </script>
+        <?php
     }
 
     ?>
