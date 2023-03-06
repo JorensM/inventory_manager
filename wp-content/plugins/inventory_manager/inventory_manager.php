@@ -311,11 +311,22 @@ function custom_css() {
                 display: none !important;
             }
         </style>
-  <?php
+    <?php
+    //Hide price field if user doesn't have 'price' permission
     if(!user_can(wp_get_current_user(), "price")){
         ?>  
             <style>
                 ._regular_price_field{
+                    display: none !important;
+                }
+            </style>
+        <?php
+    }
+    //Hide shipping tab if user doesn't have 'shipping' permission
+    if(!user_can(wp_get_current_user(), "shipping")){
+        ?>  
+            <style>
+                .shipping_options{
                     display: none !important;
                 }
             </style>
@@ -654,6 +665,7 @@ function update_custom_roles() {
     $admin_role = get_role("administrator");
 
     $admin_role->add_cap("price", true);
+    $admin_role->add_cap("shipping", true);
 
     //Roles to remove
     $to_remove = [
