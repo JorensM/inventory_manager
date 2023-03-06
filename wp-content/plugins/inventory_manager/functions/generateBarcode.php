@@ -80,8 +80,8 @@
         $font_size = 16;
         //$text_height = $text_bounding_box[7];
 
-        echo "img width = $width";
-        echo "text width = $text_width";
+        //echo "img width = $width";
+        //echo "text width = $text_width";
 
         $text_x = ($width - $text_width) / 2;
         $text_y = $height / 2 + $font_size / 2;

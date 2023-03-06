@@ -293,7 +293,15 @@ function custom_css() {
             .misc-pub-curtime,
             .misc-pub-visibility,
             .product-data-wrapper,
-            ._sale_price_field
+            ._sale_price_field,
+            #wp-admin-bar-wp-logo,
+            #wp-admin-bar-site-name,
+            #wp-admin-bar-comments,
+            #wp-admin-bar-new-post,
+            #wp-admin-bar-new-media,
+            #wp-admin-bar-new-page,
+            #wp-admin-bar-new-shop_order,
+            #wp-admin-bar-new-shop_coupon
             {
                 display: none !important; 
             }
