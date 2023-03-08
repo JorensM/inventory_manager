@@ -2,8 +2,8 @@
 
     
 
-    function reverbCreateListing($data, $token){
-        $curl = curl_init("https://sandbox.reverb.com/api/listings");
+    function reverbUpdateListing($data, $token, $reverb_listing_id){
+        $curl = curl_init("https://sandbox.reverb.com/api/listings/$reverb_listing_id");
 
         error_log("Creating listing on reverb");
 
@@ -28,7 +28,7 @@
 
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
         curl_setopt($curl, CURLOPT_POSTFIELDS, $final_data_json);
 
         $res = null;

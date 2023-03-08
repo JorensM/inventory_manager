@@ -1,0 +1,14 @@
+2023-03-07T07:11:04+00:00 CRITICAL Uncaught TypeError: error_log(): Argument #1 ($message) must be of type string, array given in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php:889
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php(889): error_log(Array)
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): on_product_publish('publish', 'auto-draft', Object(WP_Post))
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\post.php(5347): do_action('transition_post...', 'publish', 'auto-draft', Object(WP_Post))
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\post.php(4607): wp_transition_post_status('publish', 'auto-draft', Object(WP_Post))
+#6 C:\xampp2\htdocs\inventory_manager\wp-includes\post.php(4819): wp_insert_post(Array, false, true)
+#7 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\post.php(426): wp_update_post(Array)
+#8 C:\xampp2\htdocs\inventory_manager\wp-admin\post.php(227): edit_post()
+#9 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php on line 889
+

@@ -16,6 +16,7 @@ error_reporting(E_ALL);
 
 require_once("functions/generateBarcode.php");
 require_once("functions/reverbCreateListing.php");
+require_once("functions/reverbUpdateListing.php");
 
 $domain = "inv-mgr";
 
@@ -121,7 +122,7 @@ function woo_product_custom_fields(){
         //Brand info
         woocommerce_wp_text_input(
             array(
-                'id'          => '_brand_info',
+                'id'          => 'brand_info',
                 'label'       => __( 'Brand Info', $domain ),
                 'placeholder' => '',
                 'desc_tip'    => false,
@@ -133,7 +134,7 @@ function woo_product_custom_fields(){
         //Model info
         woocommerce_wp_text_input(
             array(
-                'id'          => '_model_info',
+                'id'          => 'model_info',
                 'label'       => __( 'Model info', $domain ),
                 'placeholder' => '',
                 'desc_tip'    => false,
@@ -148,7 +149,7 @@ function woo_product_custom_fields(){
         // echo "</pre>";
         woocommerce_wp_text_input(
             array(
-                'id'                => '_year_field',
+                'id'                => 'year_field',
                 'label'             => __( 'Approx./exact year', $domain ),
                 'placeholder'       => '',
                 // 'value' => "2023",
@@ -165,7 +166,7 @@ function woo_product_custom_fields(){
         //Color
         woocommerce_wp_text_input(
             array(
-                'id'                => '_color_field',
+                'id'                => 'color_field',
                 'label'             => __( 'Finish color', $domain ),
                 'placeholder'       => '',
             )
@@ -174,7 +175,7 @@ function woo_product_custom_fields(){
         //Country
         woocommerce_wp_text_input(
             array(
-                'id'                => '_country_field',
+                'id'                => 'country_field',
                 'label'             => __( 'Country of manufacture', $domain ),
                 'placeholder'       => '',
             )
@@ -183,7 +184,7 @@ function woo_product_custom_fields(){
         //Handedness
         woocommerce_wp_select(
             array(
-                'id'      => '_handedness_field',
+                'id'      => 'handedness_field',
                 'label'   => __( 'Handedness', $domain ),
                 'options' => array(
                     'right'   => __( 'Right', $domain ),
@@ -195,7 +196,7 @@ function woo_product_custom_fields(){
         //Body type
         woocommerce_wp_text_input(
             array(
-                'id'                => '_body_type_field',
+                'id'                => 'body_type_field',
                 'label'             => __( 'Body type', $domain ),
                 'placeholder'       => '',
             )
@@ -204,7 +205,7 @@ function woo_product_custom_fields(){
         //String configuration
         woocommerce_wp_text_input(
             array(
-                'id'                => '_string_configuration_field',
+                'id'                => 'string_configuration_field',
                 'label'             => __( 'Number of strings/string configuration', $domain ),
                 'placeholder'       => '',
             )
@@ -213,7 +214,7 @@ function woo_product_custom_fields(){
         //Fretboard material
         woocommerce_wp_text_input(
             array(
-                'id'                => '_fretboard_material_field',
+                'id'                => 'fretboard_material_field',
                 'label'             => __( 'Fretboard material', $domain ),
                 'placeholder'       => '',
             )
@@ -222,7 +223,7 @@ function woo_product_custom_fields(){
         //Neck material
         woocommerce_wp_text_input(
             array(
-                'id'                => '_neck_material_field',
+                'id'                => 'neck_material_field',
                 'label'             => __( 'Neck Material', $domain ),
                 'placeholder'       => '',
             )
@@ -231,12 +232,12 @@ function woo_product_custom_fields(){
         //Condition
         woocommerce_wp_select(
             array(
-                'id'      => '_condition_field',
+                'id'      => 'condition_field',
                 'label'   => __( 'Condition', $domain ),
                 'options' => array(
                     'used'   => __( 'Used', $domain ),
-                    'new'   => __( 'New', $domain ),
-                    'for-parts'   => __( 'For parts', $domain ),
+                    // 'new'   => __( 'New', $domain ),
+                    'non-functioning'   => __( 'Non-functioning', $domain ),
                 )
             )
         );
@@ -244,7 +245,7 @@ function woo_product_custom_fields(){
         //Notes
         woocommerce_wp_textarea_input(
             array(
-                'id'          => '_notes_field',
+                'id'          => 'notes_field',
                 'label'       => __( 'Notes ', 'woocommerce' ),
                 'placeholder' => '',
                 "style" => "height: 140px;",
@@ -257,30 +258,66 @@ function woo_product_custom_fields(){
 }
 add_action( 'woocommerce_product_options_general_product_data', 'woo_product_custom_fields' );
 
+$custom_field_ids = [
+    "brand_info",
+    "model_info",
+    "year_field",
+    "handedness_field",
+    "color_field",
+    "country_field",
+    "body_type_field",
+    "string_configuration_field",
+    "fretboard_material_field",
+    "neck_material_field",
+    "condition_field"
+];
+
+$custom_textarea_field_ids = [
+    "notes_field"
+];
+
+$reverb_field_mappings = [
+    "make" => "brand_info",
+    "model" => "model_info",
+    "year" => "year_field",
+    "descriptions" => "notes_field"
+];
+
 //Save custom fields
 function woo_save_product_fields( $post_id ){
 
-    $field_ids = [
-        "_brand_info",
-        "_model_info",
-        "_year_field",
-        "_handedness_field"
-    ];
+    global $custom_field_ids;
+
+    $field_ids = $custom_field_ids;
 
     $textarea_field_ids = [
-        "_notes_field"
+        "notes_field"
     ];
 
+    $product = wc_get_product($post_id);
+
     foreach($field_ids as $field_id){
-        $field_data = $_POST[$field_id];
-        update_post_meta( $post_id, $field_id, esc_attr( $field_data ) );
+        $field_data = esc_attr($_POST[$field_id]);
+        update_post_meta( $post_id, $field_id, $field_data );
+        if($product->get_meta($field_id)){
+            $product->update_meta_data($field_id, $field_data);
+        }else{
+            $product->add_meta_data($field_id, $field_data);
+        }
     }
 
     foreach($textarea_field_ids as $field_id){
-        $field_data = $_POST[$field_id];
-	    update_post_meta( $post_id, $field_id, esc_html( $field_data ) );
+        $field_data = esc_html($_POST[$field_id]);
+	    update_post_meta( $post_id, $field_id, $field_data );
+        if($product->get_meta($field_id)){
+            $product->update_meta_data($field_id, $field_data);
+        }else{
+            $product->add_meta_data($field_id, $field_data);
+        }
+        
     }
 
+    $product->save();
     
 
 }
@@ -468,10 +505,10 @@ function custom_js() {
                         }
                     }
 
-                    let brand_info = document.getElementById("_brand_info").value;
-                    let model_info = document.getElementById("_model_info").value;
-                    let year = document.getElementById("_year_field").value;
-                    let color = document.getElementById("_color_field").value;
+                    let brand_info = document.getElementById("brand_info").value;
+                    let model_info = document.getElementById("model_info").value;
+                    let year = document.getElementById("year_field").value;
+                    let color = document.getElementById("color_field").value;
 
                     // model_info = addSpaceOrEmpty(model_info);
                     // year_info = addSpaceOrEmpty(year);
@@ -826,6 +863,28 @@ function update_custom_roles() {
 }
 add_action( 'init', 'update_custom_roles' );
 
+function addCustomCategories(){
+    $categories_to_add = [
+        [
+            "name" => "Accessories",
+            "uuid" => "62835d2e-ac92-41fc-9b8d-4aba8c1c25d5"
+        ],
+        [
+            "name" => "Bass Cases",
+            "uuid" => "bd397c15-0cf3-4c6f-8005-7b8309ced1c4"
+        ],
+    ];
+
+    foreach($categories_to_add as $category){
+        wp_insert_term( $category["name"], 'product_cat', array(
+            'slug' => $category["uuid"] // optional
+        ) );
+    }
+
+   
+}
+add_action("init", "addCustomCategories");
+
 //generateBarcode("1234", "hello");
 /* Render barcode below SKU field. deprecated */
 // function render_product_barcode(){
@@ -873,17 +932,29 @@ add_action( 'woocommerce_update_product', 'on_product_save', 10, 1 );
 
 $REVERB_TOKEN = "0f603718557c595e4f814f1a6325e505e58f33d2499cbb66040ee6fec55a836d";
 
-//On product publish
-function on_product_publish($new_status, $old_status, $post) {
+// echo "<pre>";
+//     print_r(get_post_meta(212));
+// echo "</pre>";
+
+//Publish the product to Reverb
+function publishToReverb($post_id, $post) {
 
     error_log("On product publish");
 
+    //$post = get_post($post_id);
+
     global $REVERB_TOKEN;
 
-    if($new_status == 'publish' && !empty($post->ID) && in_array( $post->post_type, array( 'product') )) {
+    if(get_post_status($post_id) == "publish" && !empty($post->ID) && in_array( $post->post_type, array( 'product') )) {
         error_log("Product found");
         $product = wc_get_product($post->ID);
 
+
+        // error_log(print_r($product, true));
+        // error_log(print_r($product->get_meta_data(), true));
+        // error_log(print_r(get_post_meta($post->ID), true));
+        // error_log("Field: ");
+        // error_log(print_r($product->get_meta_data(), true));
 
         $field_ids = [
             "_brand_info",
@@ -892,13 +963,66 @@ function on_product_publish($new_status, $old_status, $post) {
             "_handedness_field"
         ];
 
-        $data = [
-            "make" => $product->get_meta("_brand_info"),
-            "model" => $product->get_meta("_model_info")
+        //Get image urls
+        $image_ids = $product->get_gallery_image_ids();
+        $image_urls = [];
+        foreach($image_ids as $image_id){
+            array_push($image_urls, wp_get_attachment_url($image_id));
+        }
+
+        //Get category uuids
+        $category_ids = $product->get_category_ids();
+        $category_uuids = [];
+
+        error_log("Categories: ");
+        error_log(print_r($category_ids, true));
+        foreach($category_ids as $category_id){
+            $category = get_term_by("id", $category_id, "product_cat");//get_category($category_id);
+            error_log(print_r($category, true));
+            $uuid = $category->slug;
+
+            array_push($category_uuids, ["uuid" => $uuid]);
+        }
+
+        global $reverb_field_mappings;
+
+        $data = [];
+
+        foreach($reverb_field_mappings as $reverb_field => $woo_field){
+            $data[$reverb_field] = $product->get_meta($woo_field);
+        }
+
+        $condition_mappings = [
+            "used" => "ae4d9114-1bd7-4ec5-a4ba-6653af5ac84d",
+            "non-functioning" => "fbf35668-96a0-4baa-bcde-ab18d6b1b329"
         ];
 
-        reverbCreateListing($data, $REVERB_TOKEN);   
+        $data["condition"]["uuid"] = $condition_mappings[$product->get_meta("condition_field")];
+        $data["photos"] = $image_urls;
+        $data["categories"] = $category_uuids;
+        $data["title"] = $product->get_title();
+
+        // $data = [
+        //     "make" => $product->get_meta("brand_info"),
+        //     "model" => $product->get_meta("model_info")
+        // ];
+
+        $reverb_id = $product->get_meta("reverb_id");
+
+        if($reverb_id){
+            reverbUpdateListing($data, $REVERB_TOKEN, $reverb_id);
+        }else{
+            $reverb_id = reverbCreateListing($data, $REVERB_TOKEN);
+
+            error_log("Reverb id: ");
+            error_log($reverb_id);
+
+            $product->add_meta_data("reverb_id", $reverb_id);
+            $product->save();
+        }
+
+        
     }
 }
-add_action('transition_post_status', 'on_product_publish', 10, 3);
+add_action("woocommerce_process_product_meta", "publishToReverb", 1000, 2);
  
