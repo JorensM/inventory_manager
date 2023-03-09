@@ -17,6 +17,7 @@ error_reporting(E_ALL);
 require_once("functions/generateBarcode.php");
 require_once("functions/reverbCreateListing.php");
 require_once("functions/reverbUpdateListing.php");
+require_once("classes/ReverbListingManager.php");
 
 $domain = "inv-mgr";
 
@@ -1024,5 +1025,19 @@ function publishToReverb($post_id, $post) {
         
     }
 }
-add_action("woocommerce_process_product_meta", "publishToReverb", 1000, 2);
+//add_action("woocommerce_process_product_meta", "publishToReverb", 1000, 2);
+
+function publishProductToPlatforms($post_id, $post){
+    global $REVERB_TOKEN;
+    global $reverb_field_mappings;
+
+    $reverbManager = new ReverbListingManager(["token" => $REVERB_TOKEN], "sandbox");
+
+    if(get_post_status($post_id) == "publish" && !empty($post->ID) && in_array( $post->post_type, array( 'product') )) {
+        $product = wc_get_product($post->ID);
+
+        $reverbManager->updateOrCreateListing($product);
+    }
+}
+add_action("woocommerce_process_product_meta", "publishProductToPlatforms", 1000, 2);
  
