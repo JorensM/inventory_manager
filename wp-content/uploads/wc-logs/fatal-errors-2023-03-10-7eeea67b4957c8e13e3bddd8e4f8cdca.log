@@ -164,3 +164,69 @@ Stack trace:
 #10 {main}
   thrown in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php on line 308
 
+2023-03-10T11:54:20+00:00 CRITICAL Uncaught Error: Call to a member function endListing() on null in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php:1187
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): registerPostStatuses('')
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-settings.php(617): do_action('init')
+#4 C:\xampp2\htdocs\inventory_manager\wp-config.php(96): require_once('C:\\xampp2\\htdoc...')
+#5 C:\xampp2\htdocs\inventory_manager\wp-load.php(50): require_once('C:\\xampp2\\htdoc...')
+#6 C:\xampp2\htdocs\inventory_manager\wp-admin\admin-ajax.php(22): require_once('C:\\xampp2\\htdoc...')
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php on line 1187
+
+2023-03-10T11:54:20+00:00 CRITICAL Uncaught Error: Call to a member function endListing() on null in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php:1187
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): registerPostStatuses('')
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-settings.php(617): do_action('init')
+#4 C:\xampp2\htdocs\inventory_manager\wp-config.php(96): require_once('C:\\xampp2\\htdoc...')
+#5 C:\xampp2\htdocs\inventory_manager\wp-load.php(50): require_once('C:\\xampp2\\htdoc...')
+#6 C:\xampp2\htdocs\inventory_manager\wp-admin\admin.php(34): require_once('C:\\xampp2\\htdoc...')
+#7 C:\xampp2\htdocs\inventory_manager\wp-admin\post.php(12): require_once('C:\\xampp2\\htdoc...')
+#8 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php on line 1187
+
+2023-03-10T12:35:11+00:00 CRITICAL Uncaught TypeError: ReverbListingManager::endListing(): Argument #1 ($product) must be of type WC_Product, bool given, called in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php on line 1211 and defined in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\ReverbListingManager.php:234
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php(1211): ReverbListingManager->endListing(false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): registerPostStatuses('')
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#4 C:\xampp2\htdocs\inventory_manager\wp-settings.php(617): do_action('init')
+#5 C:\xampp2\htdocs\inventory_manager\wp-config.php(96): require_once('C:\\xampp2\\htdoc...')
+#6 C:\xampp2\htdocs\inventory_manager\wp-load.php(50): require_once('C:\\xampp2\\htdoc...')
+#7 C:\xampp2\htdocs\inventory_manager\wp-admin\admin.php(34): require_once('C:\\xampp2\\htdoc...')
+#8 C:\xampp2\htdocs\inventory_manager\wp-admin\edit.php(10): require_once('C:\\xampp2\\htdoc...')
+#9 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\ReverbListingManager.php on line 234
+
+2023-03-10T12:35:50+00:00 CRITICAL Uncaught TypeError: ReverbListingManager::endListing(): Argument #1 ($product) must be of type WC_Product, bool given, called in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php on line 1211 and defined in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\ReverbListingManager.php:234
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php(1211): ReverbListingManager->endListing(false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): registerPostStatuses('')
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#4 C:\xampp2\htdocs\inventory_manager\wp-settings.php(617): do_action('init')
+#5 C:\xampp2\htdocs\inventory_manager\wp-config.php(96): require_once('C:\\xampp2\\htdoc...')
+#6 C:\xampp2\htdocs\inventory_manager\wp-load.php(50): require_once('C:\\xampp2\\htdoc...')
+#7 C:\xampp2\htdocs\inventory_manager\wp-admin\admin.php(34): require_once('C:\\xampp2\\htdoc...')
+#8 C:\xampp2\htdocs\inventory_manager\wp-admin\edit.php(10): require_once('C:\\xampp2\\htdoc...')
+#9 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\ReverbListingManager.php on line 234
+
+2023-03-10T12:49:11+00:00 CRITICAL Uncaught Error: Call to a member function get_meta() on null in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php:1264
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): onProductStatusSold('trash', 'publish', Object(WP_Post))
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\post.php(5347): do_action('transition_post...', 'trash', 'publish', Object(WP_Post))
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\post.php(4607): wp_transition_post_status('trash', 'publish', Object(WP_Post))
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\post.php(4819): wp_insert_post(Array, false, true)
+#6 C:\xampp2\htdocs\inventory_manager\wp-includes\post.php(3591): wp_update_post(Array)
+#7 C:\xampp2\htdocs\inventory_manager\wp-admin\post.php(260): wp_trash_post(262)
+#8 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php on line 1264
+

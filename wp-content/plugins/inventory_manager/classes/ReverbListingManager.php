@@ -91,7 +91,7 @@
          * 
          * @return string request response
          */
-        function listingRequest(string $request_type, $data = null, $id = null){
+        function listingRequest(string $request_type, $data = null, $id = null, $my = false){
 
             if($id){
                 $id = "/" . $id;
@@ -99,7 +99,9 @@
                 $id = "";
             }
 
-            $url = $this->api_url . "listings" . $id;
+            $my = $my ? "my/" : "";
+
+            $url = $this->api_url . $my . "listings" . $id;
 
             error_log($url);
 
@@ -235,9 +237,9 @@
             if(!$listing_id){
                 return false;
             }
-
-            $response = $this->listingRequest("PUT", ["reason" => "not_sold"], $listing_id . "/state/end");
-
+            error_log("Before");
+            $response = $this->listingRequest("PUT", ["reason" => "not_sold"], $listing_id . "/state/end", true);
+            error_log("after");
             return $response;
         }
 
@@ -246,24 +248,16 @@
 
             $listing = $this->getListing($product);
 
-            error_log("Before delete: ");
-            error_log(print_r($listing, true));
 
             if(isset($listing["draft"])){
-                error_log("Draft is set");
-                error_log($listing["draft"]);
-                error_log(gettype($listing["draft"]));
                 $draft = $listing["draft"];
                 if($draft == 1){
                     $this->deleteListing($product);
                 }else{
-                    $this->endListing($product);
+                    $res = $this->endListing($product);
+                    error_log(print_r($res, true));
+                    
                 }
-            }
-            if(isset($listing["live"])){
-                error_log("Live is set");
-                error_log($listing["live"]);
-                error_log(gettype($listing["live"]));
             }
         }
 
@@ -293,13 +287,13 @@
             }
 
             $listing = $this->getListing($product);
-            error_log("aaa: ");
+            //error_log("aaa: ");
 
             if(!isset($listing["id"])){
-                error_log("listing not found, deleting");
+                //error_log("listing not found, deleting");
                 $product->delete();
             }else{
-                error_log("listing found, not deleting");
+                //error_log("listing found, not deleting");
             }
             //error_log(print_r($listing, true));
         }

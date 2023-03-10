@@ -623,6 +623,13 @@ function custom_js() {
 
                 const status_dropdown = document.getElementById("post_status");
 
+                <?php
+                    if(wc_get_product()->get_status() == 'sold'){
+                        ?>
+                            document.getElementById("post-status-display").innerHTML = "<b>Sold</b>";
+                        <?php
+                    }
+                ?>
                 status_dropdown.insertAdjacentHTML("beforeend", "<option value='sold'>Sold</option>");
 
                 //Generate title based on entered information
@@ -682,7 +689,14 @@ function custom_js() {
                             display: flex;
                             justify-content: flex-end
                         '
-                    >
+                    >   
+                        <button
+                            type='button'
+                            class='button button-secondary'
+                            onclick='prefillData()'
+                        >
+                            Prefill data
+                        </button>
                         <button 
                             type='button'
                             class='button button-secondary'
@@ -694,7 +708,15 @@ function custom_js() {
                     
                 `);
 
-
+                function prefillData(){
+                    document.getElementById("_regular_price").value = 50;
+                    document.getElementById("brand_info").value = 21;
+                    document.getElementById("model_info").value = 21;
+                    document.getElementById("year_field").value = 2000;
+                    document.getElementById("notes_field").value = "abcd";
+                    document.getElementById("in-product_cat-18").checked = true;
+                    document.getElementById("in-product_cat-19").checked = true;
+                }
 
                 //Prevent "are you sure you want to leave this page" popup
                 window.addEventListener('beforeunload', function (event) {
@@ -1081,12 +1103,16 @@ function publishProductToPlatforms($post_id, $post){
     if(get_post_status($post_id) == "publish" && !empty($post->ID) && in_array( $post->post_type, array( 'product') )) {
         $product = wc_get_product($post->ID);
 
-        $reverb_response = $reverbManager->updateOrCreateListing($product);
+        $reverb_response = null;
+
+        error_log("Is updating");
+        if($product->get_meta("sold") != true){
+            $reverb_response = $reverbManager->updateOrCreateListing($product);
+        }
+        
 
         //new DisplayNotice("Test", "warning");
 
-        
-        //AdminNotice::displayError(__('An error occurred, check logs.'));
 
         if(isset($reverb_response["message"])){
             AdminNotice::displayInfo("<b>Reverb:</b> " . $reverb_response["message"]);
@@ -1100,7 +1126,7 @@ add_action('admin_notices', [new AdminNotice(), 'displayAdminNotice']);
 //--WP cron--//
 //Function to run
 function run_cron(){
-    error_log("running cron");
+    //error_log("running cron");
     checkListingsAndDeleteProducts();
 }
 //Register function as action
@@ -1135,6 +1161,7 @@ function beforeProductDelete($post_id, $post){
     }
 }
 add_action("before_delete_post", "beforeProductDelete", 10, 2);
+
 
 
 function customProductListColumns( $columns ){
@@ -1183,10 +1210,16 @@ add_action( 'manage_posts_custom_column','customProductListColumnsContent', 10, 
 
 
 function registerPostStatuses(){
+    global $text_domain;
+    // global $reverbManager;
+    // $reverbManager->endListing(wc_get_product(261));
+
     register_post_status("sold",
         [
-            "label" => "Sold",
-            "public" => true
+            "label" => _x("Sold", $text_domain),
+            "public" => true,
+            "show_in_admin_all_list" => true,
+            "show_in_admin_status_list" => true
         ]
         );
 }
@@ -1210,5 +1243,43 @@ function addProductViews( $views )
 }
 
 add_filter( 'views_edit-product', 'addProductViews' );
+
+function onProductStatusSold($new_status, $old_status, $post){
+    $product = null;
+
+    $is_product = !empty($post->ID) && in_array( $post->post_type, array( 'product') );
+    if($is_product){
+        $product = wc_get_product($post->ID);
+    }
+    if($new_status == "sold"){
+        error_log("Status changed to sold, ending listing");
+        global $reverbManager;
+        $product = wc_get_product($post->ID);
+        if($product->get_meta("sold")){
+            $product->update_meta_data("sold", true);
+        }else{
+            $product->add_meta_data("sold", true);
+        }
+        
+
+        $res = $reverbManager->endListing($product);
+        error_log("response: ");
+        error_log(print_r($res, true));
+    }
+    if($new_status != "sold" && $is_product){
+        if($product->get_meta("sold")){
+            $product->update_meta_data("sold", false);
+        }else{
+            $product->add_meta_data("sold", false);
+        }
+    }
+
+
+    if(!empty($post->ID) && in_array( $post->post_type, array( 'product') )){
+        $product->save();
+    }
+    
+}
+add_action("transition_post_status", "onProductStatusSold", 10, 3);
 
  
