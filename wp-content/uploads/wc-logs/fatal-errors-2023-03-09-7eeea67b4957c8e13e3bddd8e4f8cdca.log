@@ -1,0 +1,19 @@
+2023-03-09T14:23:55+00:00 CRITICAL Uncaught Error: Call to undefined function checkListingsAndDelete() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php:1048
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#4 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php on line 1048
+
+2023-03-09T14:55:15+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function before_product_delete(), 1 passed in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php on line 310 and exactly 2 expected in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php:1075
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(310): before_product_delete(235)
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\post.php(3407): do_action('before_delete_p...', 235, Object(WP_Post))
+#4 C:\xampp2\htdocs\inventory_manager\wp-admin\post.php(325): wp_delete_post(235, true)
+#5 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php on line 1075
+

@@ -28,7 +28,7 @@
                 "make" => "brand_info",
                 "model" => "model_info",
                 "year" => "year_field",
-                "description" => "notes_field"
+                "description" => "notes_field",
             ];
 
             $this->condition_mappings = [
@@ -71,6 +71,7 @@
 
             //If id is returned, that means listing already exists, so we update it
             if($listing_id){
+                error_log("Updating listing");
                 $response = $this->updateListing($product);
             }
             //If no id is returned, that means listing hasn't been created, so we create it
@@ -121,6 +122,8 @@
 
             if($request_type == "POST" || $request_type == "PUT"){
                 $data_json = json_encode($data);
+                error_log("Data: ");
+                error_log(print_r($data, true));
                 curl_setopt($curl, CURLOPT_POSTFIELDS, $data_json);
             }
 
@@ -183,14 +186,33 @@
             //Set condition data field
             $data["condition"]["uuid"] = $this->condition_mappings[$product->get_meta("condition_field")];
             //Set photos data field
-            $data["photos"] = $image_urls;
+
+            //Whether to use test photos
+            $test_photos = true;
+
+            //Check if test photos are to be used
+            if($test_photos){
+                //Add test photos
+                $data["photos"] = ["https://i.imgur.com/WJlG8F6.png"];
+            }else{
+                //Add actual photos from product
+                $data["photos"] = $image_urls;
+            }
+            
             //Set categories data field
             $data["categories"] = $category_uuids;
             //Set title data field
             $data["title"] = $product->get_title();
 
+            //Set price data fields
             $data["price"]["amount"] = $product->get_regular_price();
             $data["price"]["currency"] = "USD";
+
+            //Set publish data field
+            //$is_draft = $product->get_meta("reverb_draft");
+            $data["publish"] = $product->get_meta("reverb_draft") == "yes" ? "false" : "true";
+
+            $data["shipping"]["local"] = true;
 
             return $data;
         }
@@ -198,11 +220,88 @@
         
 
         function deleteListing(WC_Product $product){
-            
+            $listing_id = $product->get_meta("reverb_id");
+
+            if(!$listing_id){
+                return false;
+            }
+            $response = $this->listingRequest("DELETE", null, $listing_id);
+            return $response;
+        }
+
+        function endListing(WC_Product $product){
+            $listing_id = $product->get_meta("reverb_id");
+
+            if(!$listing_id){
+                return false;
+            }
+
+            $response = $this->listingRequest("PUT", ["reason" => "not_sold"], $listing_id . "/state/end");
+
+            return $response;
+        }
+
+        function endOrDeleteListing(WC_Product $product){
+            $listing_id = $product->get_meta("reverb_id");
+
+            $listing = $this->getListing($product);
+
+            error_log("Before delete: ");
+            error_log(print_r($listing, true));
+
+            if(isset($listing["draft"])){
+                error_log("Draft is set");
+                error_log($listing["draft"]);
+                error_log(gettype($listing["draft"]));
+                $draft = $listing["draft"];
+                if($draft == 1){
+                    $this->deleteListing($product);
+                }else{
+                    $this->endListing($product);
+                }
+            }
+            if(isset($listing["live"])){
+                error_log("Live is set");
+                error_log($listing["live"]);
+                error_log(gettype($listing["live"]));
+            }
         }
 
         function getListing(WC_Product $product){
-            
+
+            $listing_id = $product->get_meta("reverb_id");
+
+            if(!$listing_id){
+                return false;
+            }
+
+            return $this->listingRequest("GET", null, $listing_id);
+        }
+
+        /**
+         * Check if listing has been deleted on Reverb, and delete it on this app if true
+         * 
+         * @param WC_Product $product product to check
+         * 
+         * @return bool true if deleted, false if not
+         */
+        function checkListingAndDeleteProduct(WC_Product $product){
+            $listing_id = $product->get_meta("reverb_id");
+
+            if(!$listing_id){
+                return false;
+            }
+
+            $listing = $this->getListing($product);
+            error_log("aaa: ");
+
+            if(!isset($listing["id"])){
+                error_log("listing not found, deleting");
+                $product->delete();
+            }else{
+                error_log("listing found, not deleting");
+            }
+            //error_log(print_r($listing, true));
         }
 
     }

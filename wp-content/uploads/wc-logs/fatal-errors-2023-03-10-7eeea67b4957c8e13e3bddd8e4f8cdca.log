@@ -1,0 +1,166 @@
+2023-03-10T09:39:49+00:00 CRITICAL Uncaught Error: Typed property DisplayNotice::$type must not be accessed before initialization in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php:1088
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): DisplayNotice->render('')
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-admin\admin-header.php(303): do_action('admin_notices')
+#4 C:\xampp2\htdocs\inventory_manager\wp-admin\edit-form-advanced.php(425): require_once('C:\\xampp2\\htdoc...')
+#5 C:\xampp2\htdocs\inventory_manager\wp-admin\post.php(206): require('C:\\xampp2\\htdoc...')
+#6 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php on line 1088
+
+2023-03-10T09:46:54+00:00 CRITICAL Uncaught Error: Call to undefined function wc_print_notice() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php:1076
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): publishProductToPlatforms(240, Object(WP_Post))
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\class-wc-admin-meta-boxes.php(268): do_action('woocommerce_pro...', 240, Object(WP_Post))
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(310): WC_Admin_Meta_Boxes->save_meta_boxes(240, Object(WP_Post))
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#7 C:\xampp2\htdocs\inventory_manager\wp-includes\post.php(4717): do_action('save_post', 240, Object(WP_Post), true)
+#8 C:\xampp2\htdocs\inventory_manager\wp-includes\post.php(4819): wp_insert_post(Array, false, true)
+#9 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\post.php(426): wp_update_post(Array)
+#10 C:\xampp2\htdocs\inventory_manager\wp-admin\post.php(227): edit_post()
+#11 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php on line 1076
+
+2023-03-10T09:47:32+00:00 CRITICAL Uncaught Error: Call to undefined function wc_print_notice() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php:1075
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): publishProductToPlatforms(240, Object(WP_Post))
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\class-wc-admin-meta-boxes.php(268): do_action('woocommerce_pro...', 240, Object(WP_Post))
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(310): WC_Admin_Meta_Boxes->save_meta_boxes(240, Object(WP_Post))
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#7 C:\xampp2\htdocs\inventory_manager\wp-includes\post.php(4717): do_action('save_post', 240, Object(WP_Post), true)
+#8 C:\xampp2\htdocs\inventory_manager\wp-includes\post.php(4819): wp_insert_post(Array, false, true)
+#9 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\post.php(426): wp_update_post(Array)
+#10 C:\xampp2\htdocs\inventory_manager\wp-admin\post.php(227): edit_post()
+#11 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php on line 1075
+
+2023-03-10T09:47:53+00:00 CRITICAL Uncaught Error: Call to undefined function wc_print_notice() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php:1075
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): publishProductToPlatforms(240, Object(WP_Post))
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\class-wc-admin-meta-boxes.php(268): do_action('woocommerce_pro...', 240, Object(WP_Post))
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(310): WC_Admin_Meta_Boxes->save_meta_boxes(240, Object(WP_Post))
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#7 C:\xampp2\htdocs\inventory_manager\wp-includes\post.php(4717): do_action('save_post', 240, Object(WP_Post), true)
+#8 C:\xampp2\htdocs\inventory_manager\wp-includes\post.php(4819): wp_insert_post(Array, false, true)
+#9 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\post.php(426): wp_update_post(Array)
+#10 C:\xampp2\htdocs\inventory_manager\wp-admin\post.php(227): edit_post()
+#11 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php on line 1075
+
+2023-03-10T10:18:35+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($function) must be a valid callback, function "customProductListColums" not found or invalid function name in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php:308
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#1 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\screen.php(37): apply_filters('manage_edit-pro...', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-screen.php(998): get_column_headers(Object(WP_Screen))
+#3 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-screen.php(959): WP_Screen->show_screen_options()
+#4 C:\xampp2\htdocs\inventory_manager\wp-admin\admin-header.php(281): WP_Screen->render_screen_meta()
+#5 C:\xampp2\htdocs\inventory_manager\wp-admin\edit.php(407): require_once('C:\\xampp2\\htdoc...')
+#6 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php on line 308
+
+2023-03-10T10:18:51+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($function) must be a valid callback, function "customProductListColums" not found or invalid function name in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php:308
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#1 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\screen.php(37): apply_filters('manage_edit-pro...', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-screen.php(998): get_column_headers(Object(WP_Screen))
+#3 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-screen.php(959): WP_Screen->show_screen_options()
+#4 C:\xampp2\htdocs\inventory_manager\wp-admin\admin-header.php(281): WP_Screen->render_screen_meta()
+#5 C:\xampp2\htdocs\inventory_manager\wp-admin\edit.php(407): require_once('C:\\xampp2\\htdoc...')
+#6 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php on line 308
+
+2023-03-10T10:19:35+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($function) must be a valid callback, function "customProductListColums" not found or invalid function name in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php:308
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#1 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\screen.php(37): apply_filters('manage_edit-pro...', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-screen.php(998): get_column_headers(Object(WP_Screen))
+#3 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-screen.php(959): WP_Screen->show_screen_options()
+#4 C:\xampp2\htdocs\inventory_manager\wp-admin\admin-header.php(281): WP_Screen->render_screen_meta()
+#5 C:\xampp2\htdocs\inventory_manager\wp-admin\edit.php(407): require_once('C:\\xampp2\\htdoc...')
+#6 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php on line 308
+
+2023-03-10T10:19:44+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($function) must be a valid callback, function "customProductListColums" not found or invalid function name in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php:308
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#1 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\screen.php(37): apply_filters('manage_edit-pro...', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-screen.php(998): get_column_headers(Object(WP_Screen))
+#3 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-screen.php(959): WP_Screen->show_screen_options()
+#4 C:\xampp2\htdocs\inventory_manager\wp-admin\admin-header.php(281): WP_Screen->render_screen_meta()
+#5 C:\xampp2\htdocs\inventory_manager\wp-admin\edit.php(407): require_once('C:\\xampp2\\htdoc...')
+#6 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php on line 308
+
+2023-03-10T10:20:11+00:00 CRITICAL Uncaught TypeError: strip_tags(): Argument #1 ($string) must be of type string, array given in C:\xampp2\htdocs\inventory_manager\wp-includes\formatting.php:5398
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\formatting.php(5398): strip_tags(Array)
+#1 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-screen.php(1180): wp_strip_all_tags(Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-screen.php(1077): WP_Screen->render_list_table_columns_preferences()
+#3 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-screen.php(960): WP_Screen->render_screen_options()
+#4 C:\xampp2\htdocs\inventory_manager\wp-admin\admin-header.php(281): WP_Screen->render_screen_meta()
+#5 C:\xampp2\htdocs\inventory_manager\wp-admin\edit.php(407): require_once('C:\\xampp2\\htdoc...')
+#6 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-includes\formatting.php on line 5398
+
+2023-03-10T10:20:23+00:00 CRITICAL Uncaught TypeError: strip_tags(): Argument #1 ($string) must be of type string, array given in C:\xampp2\htdocs\inventory_manager\wp-includes\formatting.php:5398
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\formatting.php(5398): strip_tags(Array)
+#1 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-screen.php(1180): wp_strip_all_tags(Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-screen.php(1077): WP_Screen->render_list_table_columns_preferences()
+#3 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-screen.php(960): WP_Screen->render_screen_options()
+#4 C:\xampp2\htdocs\inventory_manager\wp-admin\admin-header.php(281): WP_Screen->render_screen_meta()
+#5 C:\xampp2\htdocs\inventory_manager\wp-admin\edit.php(407): require_once('C:\\xampp2\\htdoc...')
+#6 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-includes\formatting.php on line 5398
+
+2023-03-10T10:22:48+00:00 CRITICAL Uncaught TypeError: strip_tags(): Argument #1 ($string) must be of type string, array given in C:\xampp2\htdocs\inventory_manager\wp-includes\formatting.php:5398
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\formatting.php(5398): strip_tags(Array)
+#1 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-screen.php(1180): wp_strip_all_tags(Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-screen.php(1077): WP_Screen->render_list_table_columns_preferences()
+#3 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-screen.php(960): WP_Screen->render_screen_options()
+#4 C:\xampp2\htdocs\inventory_manager\wp-admin\admin-header.php(281): WP_Screen->render_screen_meta()
+#5 C:\xampp2\htdocs\inventory_manager\wp-admin\edit.php(407): require_once('C:\\xampp2\\htdoc...')
+#6 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-includes\formatting.php on line 5398
+
+2023-03-10T10:26:04+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($function) must be a valid callback, function "action_custom_columns_content" not found or invalid function name in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php:308
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-posts-list-table.php(1345): do_action('manage_posts_cu...', 'thumb', 243)
+#3 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-list-table.php(1532): WP_Posts_List_Table->column_default(Object(WP_Post), 'thumb')
+#4 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-posts-list-table.php(1397): WP_List_Table->single_row_columns(Object(WP_Post))
+#5 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-posts-list-table.php(807): WP_Posts_List_Table->single_row(Object(WP_Post), 0)
+#6 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-posts-list-table.php(783): WP_Posts_List_Table->_display_rows(Array, 0)
+#7 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-list-table.php(1444): WP_Posts_List_Table->display_rows()
+#8 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-list-table.php(1371): WP_List_Table->display_rows_or_placeholder()
+#9 C:\xampp2\htdocs\inventory_manager\wp-admin\edit.php(487): WP_List_Table->display()
+#10 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php on line 308
+
+2023-03-10T10:26:13+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($function) must be a valid callback, function "action_custom_columns_content" not found or invalid function name in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php:308
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-posts-list-table.php(1345): do_action('manage_posts_cu...', 'thumb', 243)
+#3 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-list-table.php(1532): WP_Posts_List_Table->column_default(Object(WP_Post), 'thumb')
+#4 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-posts-list-table.php(1397): WP_List_Table->single_row_columns(Object(WP_Post))
+#5 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-posts-list-table.php(807): WP_Posts_List_Table->single_row(Object(WP_Post), 0)
+#6 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-posts-list-table.php(783): WP_Posts_List_Table->_display_rows(Array, 0)
+#7 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-list-table.php(1444): WP_Posts_List_Table->display_rows()
+#8 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-list-table.php(1371): WP_List_Table->display_rows_or_placeholder()
+#9 C:\xampp2\htdocs\inventory_manager\wp-admin\edit.php(487): WP_List_Table->display()
+#10 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php on line 308
+

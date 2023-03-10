@@ -13,13 +13,25 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 //error_log("hello123");
+//--Requires--//
+//Constants
+require_once("const.php");
 
+//Classes
+require_once("classes/ReverbListingManager.php");
+require_once("classes/AdminNotice.php");
+
+//Functions
 require_once("functions/generateBarcode.php");
 require_once("functions/reverbCreateListing.php");
 require_once("functions/reverbUpdateListing.php");
-require_once("classes/ReverbListingManager.php");
+require_once("functions/checkListingsAndDeleteProducts.php");
 
-$domain = "inv-mgr";
+require_once(__DIR__."/../woocommerce/includes/wc-notice-functions.php");
+
+
+
+$text_domain = "inv-mgr";
 
 /*
 
@@ -62,7 +74,7 @@ function remove_menu_items(){
         "edit-comments.php",
         "themes.php",
         "tools.php",
-        "options-general.php",
+        //"options-general.php",
         "woocommerce",
         "woocommerce-marketing",
         "wc-admin&path=/analytics/overview",
@@ -75,11 +87,51 @@ function remove_menu_items(){
         Some of the WooCommerce submenus don't get removed even if they're added to this list.
         The workaround was to hide these items with CSS in the custom_css() function
     */
+    // $submenus_to_remove = [
+    //     ["edit.php?post_type=product", "edit-tags.php?taxonomy=product_tag&post_type=product"],
+    //     ["edit.php?post_type=product", "product_attributes"],
+    //     ["edit.php?post_type=product", "product-reviews"],
+    //     ["index.php", "update-core.php"],
+    //     ["options-general.php", "options-general.php"],
+
+    // ];
+
+
+    /*
+        Submenus to remove. Format:
+        [
+            "menu1_slug" => [
+                "submenu1_slug",
+                "submenu2_slug
+            ],
+            "menu2_slug => [
+                "submenu1_slug",
+                "submenu2_slug"
+            ]
+        ]
+
+        Some of the WooCommerce submenus don't get removed even if they're added to this list.
+        The workaround is to hide these items with CSS in the custom_css() function
+    */
     $submenus_to_remove = [
-        ["edit.php?post_type=product", "edit-tags.php?taxonomy=product_tag&post_type=product"],
-        ["edit.php?post_type=product", "product_attributes"],
-        ["edit.php?post_type=product", "product-reviews"],
-        ["index.php", "update-core.php"],
+        "edit.php?post_type=product" => [
+            "edit-tags.php?taxonomy=product_tag&post_type=product",
+            "product_attributes",
+            "product-reviews"
+        ],
+        "index.php" => [
+            "update-core.php"
+        ],
+        "options-general.php" => [
+            "options-general.php",
+            "options-writing.php",
+            "options-reading.php",
+            "options-discussion.php",
+            "options-media.php",
+            "options-permalink.php",
+            "options-privacy.php"
+
+        ]
     ];
 
     // echo "<pre>";
@@ -92,12 +144,58 @@ function remove_menu_items(){
         remove_menu_page($item);
     }
 
-    foreach($submenus_to_remove as $item){
-        remove_submenu_page($item[0], $item[1]);
+    foreach($submenus_to_remove as $parent_slug => $parent){
+        foreach($parent as $submenu_item){
+            remove_submenu_page($parent_slug, $submenu_item);
+        }
+        //remove_submenu_page($item[0], $item[1]);
     }
 
 }
 add_action( 'admin_init', "remove_menu_items" );
+
+function render_reverb_token_field(){
+    ?>  
+        <input type="text" name="reverb_token" id="reverb_token" value="<?php echo get_option("reverb_token") ?>">
+    <?php
+}
+
+function render_settings_section(){
+    //echo "abc";
+}
+
+//Add settings
+function add_settings(){
+
+    register_setting("settings_page_settings-general", "reverb_token");
+
+    add_settings_section("custom", "Settings", "render_settings_section", "settings_page_settings-general");
+    add_settings_field("reverb_token", "Reverb token", "render_reverb_token_field", "settings_page_settings-general", "custom");
+    //add_settings_field("reverb_token", "Reverb token", "render_reverb_token_field", "settings_page_settings-general", "custom");
+    
+
+}
+add_action("admin_init", "add_settings");
+
+
+// General settings page
+function settingsGeneralPage(){
+    ?>
+    <form method="POST" action="options.php">
+        <?php 
+            settings_fields( 'settings_page_settings-general' );	//pass slug name of page, also referred to in Settings API as option group name
+            do_settings_sections( 'settings_page_settings-general' ); 	//pass slug name of page
+            submit_button();
+        ?>
+    </form>
+    <?php
+}
+
+// Add menu items
+function add_menu_items(){
+    add_submenu_page("options-general.php", "General", "General", "manage_options", "settings-general", "settingsGeneralPage");
+}
+add_action("admin_menu", "add_menu_items");
 
 //Reorder admin menu items
 function change_menu_order( $menu_ord ) {
@@ -116,7 +214,7 @@ add_filter( 'menu_order', 'change_menu_order', 10, 1 );
 
 //Add custom fields to WooCommerce product editor
 function woo_product_custom_fields(){
-    global $woocommerce, $post, $domain;
+    global $woocommerce, $post, $text_domain;
     
     //Render fields
     echo '<div class="options_group">';
@@ -124,11 +222,11 @@ function woo_product_custom_fields(){
         woocommerce_wp_text_input(
             array(
                 'id'          => 'brand_info',
-                'label'       => __( 'Brand Info', $domain ),
+                'label'       => __( 'Brand Info', $text_domain ),
                 'placeholder' => '',
                 'desc_tip'    => false,
                 'custom_attributes' => array( 'required' => 'required' ),
-                // 'description' => __( "Enter Brand info", $domain )
+                // 'description' => __( "Enter Brand info", $text_domain )
             )
         );
 
@@ -136,11 +234,11 @@ function woo_product_custom_fields(){
         woocommerce_wp_text_input(
             array(
                 'id'          => 'model_info',
-                'label'       => __( 'Model info', $domain ),
+                'label'       => __( 'Model info', $text_domain ),
                 'placeholder' => '',
                 'desc_tip'    => false,
                 'custom_attributes' => array( 'required' => 'required' ),
-                // 'description' => __( "Enter Model info", $domain )
+                // 'description' => __( "Enter Model info", $text_domain )
             )
         );
 
@@ -151,7 +249,7 @@ function woo_product_custom_fields(){
         woocommerce_wp_text_input(
             array(
                 'id'                => 'year_field',
-                'label'             => __( 'Approx./exact year', $domain ),
+                'label'             => __( 'Approx./exact year', $text_domain ),
                 'placeholder'       => '',
                 // 'value' => "2023",
                 //'desc_tip'    		=> false,
@@ -168,7 +266,7 @@ function woo_product_custom_fields(){
         woocommerce_wp_text_input(
             array(
                 'id'                => 'color_field',
-                'label'             => __( 'Finish color', $domain ),
+                'label'             => __( 'Finish color', $text_domain ),
                 'placeholder'       => '',
             )
         );
@@ -177,7 +275,7 @@ function woo_product_custom_fields(){
         woocommerce_wp_text_input(
             array(
                 'id'                => 'country_field',
-                'label'             => __( 'Country of manufacture', $domain ),
+                'label'             => __( 'Country of manufacture', $text_domain ),
                 'placeholder'       => '',
             )
         );
@@ -186,10 +284,10 @@ function woo_product_custom_fields(){
         woocommerce_wp_select(
             array(
                 'id'      => 'handedness_field',
-                'label'   => __( 'Handedness', $domain ),
+                'label'   => __( 'Handedness', $text_domain ),
                 'options' => array(
-                    'right'   => __( 'Right', $domain ),
-                    'left'   => __( 'Left', $domain ),
+                    'right'   => __( 'Right', $text_domain ),
+                    'left'   => __( 'Left', $text_domain ),
                 )
             )
         );
@@ -198,7 +296,7 @@ function woo_product_custom_fields(){
         woocommerce_wp_text_input(
             array(
                 'id'                => 'body_type_field',
-                'label'             => __( 'Body type', $domain ),
+                'label'             => __( 'Body type', $text_domain ),
                 'placeholder'       => '',
             )
         );
@@ -207,7 +305,7 @@ function woo_product_custom_fields(){
         woocommerce_wp_text_input(
             array(
                 'id'                => 'string_configuration_field',
-                'label'             => __( 'Number of strings/string configuration', $domain ),
+                'label'             => __( 'Number of strings/string configuration', $text_domain ),
                 'placeholder'       => '',
             )
         );
@@ -216,7 +314,7 @@ function woo_product_custom_fields(){
         woocommerce_wp_text_input(
             array(
                 'id'                => 'fretboard_material_field',
-                'label'             => __( 'Fretboard material', $domain ),
+                'label'             => __( 'Fretboard material', $text_domain ),
                 'placeholder'       => '',
             )
         );
@@ -225,7 +323,7 @@ function woo_product_custom_fields(){
         woocommerce_wp_text_input(
             array(
                 'id'                => 'neck_material_field',
-                'label'             => __( 'Neck Material', $domain ),
+                'label'             => __( 'Neck Material', $text_domain ),
                 'placeholder'       => '',
             )
         );
@@ -234,11 +332,11 @@ function woo_product_custom_fields(){
         woocommerce_wp_select(
             array(
                 'id'      => 'condition_field',
-                'label'   => __( 'Condition', $domain ),
+                'label'   => __( 'Condition', $text_domain ),
                 'options' => array(
-                    'used'   => __( 'Used', $domain ),
-                    // 'new'   => __( 'New', $domain ),
-                    'non-functioning'   => __( 'Non-functioning', $domain ),
+                    'used'   => __( 'Used', $text_domain ),
+                    // 'new'   => __( 'New', $text_domain ),
+                    'non-functioning'   => __( 'Non-functioning', $text_domain ),
                 )
             )
         );
@@ -247,7 +345,7 @@ function woo_product_custom_fields(){
         woocommerce_wp_textarea_input(
             array(
                 'id'          => 'notes_field',
-                'label'       => __( 'Notes ', 'woocommerce' ),
+                'label'       => __( 'Notes ', $text_domain ),
                 'placeholder' => '',
                 "style" => "height: 140px;",
                 // 'rows' => 6,
@@ -255,10 +353,21 @@ function woo_product_custom_fields(){
             )
         );
 
+        woocommerce_wp_checkbox(
+            array(
+                'id'            => 'reverb_draft',
+                'wrapper_class' => 'show_if_simple',
+                'label'         => __('<b>Reverb:</b> save as draft', $text_domain ),
+                'desc_tip'      => true,
+                'description'   => __( 'If this is checked, listing will be created as draft on Reverb, instead of being published', $text_domain )
+            )
+        );
+
     echo '</div>';
 }
 add_action( 'woocommerce_product_options_general_product_data', 'woo_product_custom_fields' );
 
+//Custom field ids
 $custom_field_ids = [
     "brand_info",
     "model_info",
@@ -270,24 +379,23 @@ $custom_field_ids = [
     "string_configuration_field",
     "fretboard_material_field",
     "neck_material_field",
-    "condition_field"
+    "condition_field",
 ];
 
+//Custom textarea field ids
 $custom_textarea_field_ids = [
     "notes_field"
 ];
 
-$reverb_field_mappings = [
-    "make" => "brand_info",
-    "model" => "model_info",
-    "year" => "year_field",
-    "descriptions" => "notes_field"
+//Custom checkbox field ids
+$custom_cb_field_ids = [
+    "reverb_draft"
 ];
 
 //Save custom fields
 function woo_save_product_fields( $post_id ){
 
-    global $custom_field_ids;
+    global $custom_field_ids, $custom_cb_field_ids;
 
     $field_ids = $custom_field_ids;
 
@@ -317,6 +425,21 @@ function woo_save_product_fields( $post_id ){
         }
         
     }
+
+    foreach($custom_cb_field_ids as $field_id){
+        $field_data = isset( $_POST['reverb_draft'] ) ? 'yes' : 'no';
+        if($product->get_meta($field_id)){
+            $product->update_meta_data($field_id, $field_data);
+        }else{
+            $product->add_meta_data($field_id, $field_data);
+        }
+    }
+
+    //echo $_POST["reverb_draft"];
+
+    // if(!$product->get_meta("is_sold")){
+    //     $product->add_meta_data("is_sold", "no");
+    // }
 
     $product->save();
     
@@ -481,7 +604,7 @@ add_action('admin_head', 'custom_css');
 function custom_js() {
     $page_id = get_current_screen()->id;
 
-    echo $page_id;
+    //echo $page_id;
 
     //Custom style for users page
     if($page_id === "users"){
@@ -492,10 +615,15 @@ function custom_js() {
             </script>
         <?php
     }
+    //Begin "product" page
     else if($page_id === "product"){
         ?>
 
             <script>
+
+                const status_dropdown = document.getElementById("post_status");
+
+                status_dropdown.insertAdjacentHTML("beforeend", "<option value='sold'>Sold</option>");
 
                 //Generate title based on entered information
                 function generateTitle(input_element){
@@ -661,6 +789,8 @@ function custom_js() {
                 </script>
             <?php
         }
+    //End "product" page
+    //Begin "profile" page
     }else if($page_id === "profile"){
         ?>
             <script>
@@ -931,113 +1061,154 @@ function on_product_save($product_id){
 add_action( 'woocommerce_new_product', 'on_product_save', 10, 1 );
 add_action( 'woocommerce_update_product', 'on_product_save', 10, 1 );
 
-$REVERB_TOKEN = "0f603718557c595e4f814f1a6325e505e58f33d2499cbb66040ee6fec55a836d";
+//$REVERB_TOKEN = "0f603718557c595e4f814f1a6325e505e58f33d2499cbb66040ee6fec55a836d";
 
 // echo "<pre>";
 //     print_r(get_post_meta(212));
 // echo "</pre>";
 
-//Publish the product to Reverb
-function publishToReverb($post_id, $post) {
+$REVERB_TOKEN = get_option("reverb_token");
 
-    error_log("On product publish");
+$reverbManager = new ReverbListingManager(["token" => $REVERB_TOKEN], "sandbox");
 
-    //$post = get_post($post_id);
-
-    global $REVERB_TOKEN;
-
-    if(get_post_status($post_id) == "publish" && !empty($post->ID) && in_array( $post->post_type, array( 'product') )) {
-        error_log("Product found");
-        $product = wc_get_product($post->ID);
-
-
-        // error_log(print_r($product, true));
-        // error_log(print_r($product->get_meta_data(), true));
-        // error_log(print_r(get_post_meta($post->ID), true));
-        // error_log("Field: ");
-        // error_log(print_r($product->get_meta_data(), true));
-
-        $field_ids = [
-            "_brand_info",
-            "_model_info",
-            "_year_field",
-            "_handedness_field"
-        ];
-
-        //Get image urls
-        $image_ids = $product->get_gallery_image_ids();
-        $image_urls = [];
-        foreach($image_ids as $image_id){
-            array_push($image_urls, wp_get_attachment_url($image_id));
-        }
-
-        //Get category uuids
-        $category_ids = $product->get_category_ids();
-        $category_uuids = [];
-
-        error_log("Categories: ");
-        error_log(print_r($category_ids, true));
-        foreach($category_ids as $category_id){
-            $category = get_term_by("id", $category_id, "product_cat");//get_category($category_id);
-            error_log(print_r($category, true));
-            $uuid = $category->slug;
-
-            array_push($category_uuids, ["uuid" => $uuid]);
-        }
-
-        global $reverb_field_mappings;
-
-        $data = [];
-
-        foreach($reverb_field_mappings as $reverb_field => $woo_field){
-            $data[$reverb_field] = $product->get_meta($woo_field);
-        }
-
-        $condition_mappings = [
-            "used" => "ae4d9114-1bd7-4ec5-a4ba-6653af5ac84d",
-            "non-functioning" => "fbf35668-96a0-4baa-bcde-ab18d6b1b329"
-        ];
-
-        $data["condition"]["uuid"] = $condition_mappings[$product->get_meta("condition_field")];
-        $data["photos"] = $image_urls;
-        $data["categories"] = $category_uuids;
-        $data["title"] = $product->get_title();
-
-        // $data = [
-        //     "make" => $product->get_meta("brand_info"),
-        //     "model" => $product->get_meta("model_info")
-        // ];
-
-        $reverb_id = $product->get_meta("reverb_id");
-
-        if($reverb_id){
-            reverbUpdateListing($data, $REVERB_TOKEN, $reverb_id);
-        }else{
-            $reverb_id = reverbCreateListing($data, $REVERB_TOKEN);
-
-            error_log("Reverb id: ");
-            error_log($reverb_id);
-
-            $product->add_meta_data("reverb_id", $reverb_id);
-            $product->save();
-        }
-
-        
-    }
-}
-//add_action("woocommerce_process_product_meta", "publishToReverb", 1000, 2);
+//new DisplayNotice("Test", "success");
 
 function publishProductToPlatforms($post_id, $post){
-    global $REVERB_TOKEN;
-    global $reverb_field_mappings;
+    global $reverbManager;
 
-    $reverbManager = new ReverbListingManager(["token" => $REVERB_TOKEN], "sandbox");
+    //$reverbManager = new ReverbListingManager(["token" => $REVERB_TOKEN], "sandbox");
 
     if(get_post_status($post_id) == "publish" && !empty($post->ID) && in_array( $post->post_type, array( 'product') )) {
         $product = wc_get_product($post->ID);
 
-        $reverbManager->updateOrCreateListing($product);
+        $reverb_response = $reverbManager->updateOrCreateListing($product);
+
+        //new DisplayNotice("Test", "warning");
+
+        
+        //AdminNotice::displayError(__('An error occurred, check logs.'));
+
+        if(isset($reverb_response["message"])){
+            AdminNotice::displayInfo("<b>Reverb:</b> " . $reverb_response["message"]);
+        }
     }
 }
 add_action("woocommerce_process_product_meta", "publishProductToPlatforms", 1000, 2);
+add_action('admin_notices', [new AdminNotice(), 'displayAdminNotice']);
+
+
+//--WP cron--//
+//Function to run
+function run_cron(){
+    error_log("running cron");
+    checkListingsAndDeleteProducts();
+}
+//Register function as action
+add_action("run_cron", "run_cron");
+
+//Create a custom cron interval 'minute' that runs every minute
+add_filter( 'cron_schedules', 'example_add_cron_interval' );
+function example_add_cron_interval( $schedules ) { 
+    $schedules['minute'] = array(
+        'interval' => 5,
+        'display'  => esc_html__( 'Every Minute' ), );
+    return $schedules;
+}
+
+//Check if cron task is already scheduled, and schedule it if false
+if ( ! wp_next_scheduled( 'run_cron' ) ) {
+    wp_schedule_event( time(), 'minute', 'run_cron' );
+}
+
+
+function beforeProductDelete($post_id, $post){
+    //Check if post type is product
+    if(in_array( $post->post_type, array( 'product'))){
+        //Get listing managers
+        global $reverbManager;
+
+        //Get the product
+        $product = wc_get_product($post_id);
+
+        //Delete product on other platforms
+        $reverbManager->endOrDeleteListing($product);
+    }
+}
+add_action("before_delete_post", "beforeProductDelete", 10, 2);
+
+
+function customProductListColumns( $columns ){
+
+    global $text_domain;
+    
+    //add column
+    //$column = array( 'status' => __( 'Status', $text_domain ) ) ;
+
+    //array_push($columns, $column);
+
+    //array_splice( $columns, 6, 0, $column ) ;
+
+    //array_splice($columns, sizeof($columns), 0, $column);
+
+    $columns["status"] = "Status";
+
+    return $columns;
+}
+
+add_filter( 'manage_product_posts_columns', 'customProductListColumns', 15 ) ;
+
+function customProductListColumnsContent($column_id, $post_id){
+    if($column_id == "status"){
+        $status_str = "";
+        $status = get_post_status($post_id);
+
+        switch($status){
+            case "publish":
+                $status_str = "Published";
+                break;
+            case "trash":
+                $status_str = "Trashed";
+                break;
+            case "sold":
+                $status_str = "Sold";
+                break;
+            default:
+                $status_str = "Unknown";
+                break;
+        }
+        echo $status_str;
+    }
+}
+add_action( 'manage_posts_custom_column','customProductListColumnsContent', 10, 2 );
+
+
+function registerPostStatuses(){
+    register_post_status("sold",
+        [
+            "label" => "Sold",
+            "public" => true
+        ]
+        );
+}
+add_action("init", "registerPostStatuses");
+
+
+
+function addProductViews( $views ) 
+{
+    // Manipulate $views
+
+    // echo "<pre>";
+    //     htmlspecialchars(print_r($views, true));
+    // echo "<pre>";
+
+    $sold_count = wp_count_posts("product")->sold;
+
+    $views["sold"] = "<a href='edit.php?post_status=sold&post_type=product'>Sold</a><span class='count'>($sold_count)</span>";
+
+    return $views;
+}
+
+add_filter( 'views_edit-product', 'addProductViews' );
+
  
