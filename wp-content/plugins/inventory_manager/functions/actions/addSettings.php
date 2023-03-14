@@ -1,5 +1,15 @@
 <?php
 
+function render_reverb_token_field(){
+    ?>  
+        <input type="text" name="reverb_token" id="reverb_token" value="<?php echo get_option("reverb_token") ?>">
+    <?php
+}
+
+function render_settings_section(){
+    //echo "abc";
+}
+
 //Add settings
 function add_settings(){
 
