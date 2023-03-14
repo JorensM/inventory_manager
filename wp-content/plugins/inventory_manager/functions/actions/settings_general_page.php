@@ -1,7 +1,7 @@
 <?php
 
 // General settings page
-function settingsGeneralPage(){
+function settings_general_page(){
     ?>
     <form method="POST" action="options.php">
         <?php 

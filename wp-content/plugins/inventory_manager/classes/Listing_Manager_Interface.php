@@ -1,7 +1,7 @@
 <?php
 
     
-    interface IListingManager {
+    interface Listing_Manager_Interface {
 
         /**
             * Interface for listing managers, such as ReverbListingManager, EbayListingManager etc.
@@ -22,7 +22,7 @@
          * @param WC_Product $product product to create listing from.
          * @return string response of API request
          */
-        function createListing(WC_Product $product);
+        function create_listing(WC_Product $product);
 
         /**
          * Updates existing listing
@@ -30,7 +30,7 @@
          * @param WC_Product $product product associated with listing
          * @return string response of API request
          */
-        function updateListing(WC_Product $product);
+        function update_listing(WC_Product $product);
 
         /**
          * Update existing listing, or creates one if it hasn't been created yet
@@ -38,7 +38,7 @@
          * @param WC_Product $product product associated with listing, or product to create listing from
          * @return string response of API request
          */
-        function updateOrCreateListing(WC_Product $product);
+        function update_or_create_Listing(WC_Product $product);
 
         /**
          * Deletes existing listing
@@ -46,7 +46,7 @@
          * @param WC_Product product associated with listing
          * @return string response of API request
          */
-        function deleteListing(WC_Product $product);
+        function delete_listing(WC_Product $product);
 
         /**
          * Retrieves listing
@@ -54,6 +54,10 @@
          * @param WC_Product product associated with listing
          * @return string response of API request
          */
-        function getListing(WC_Product $product);
+        function get_listing(WC_Product $product);
+
+        function end_listing(WC_Product $product);
+
+        function end_or_delete_listing(WC_Product $product);
 
     }

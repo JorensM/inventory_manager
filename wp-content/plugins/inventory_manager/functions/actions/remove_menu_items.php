@@ -1,7 +1,7 @@
 <?php
 
 //Remove unneeded menu items from admin
-function removeMenuItems(){
+function remove_menu_items(){
     global $submenu;
 
     /**

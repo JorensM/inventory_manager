@@ -1,9 +1,9 @@
 <?php
 
-    require_once("IListingManager.php");
+    require_once("Listing_Manager_Interface.php");
     require_once(__DIR__."/../functions/markProductSold.php");
 
-    class ReverbListingManager implements IListingManager{
+    class Reverb_Listing_Manager implements Listing_Manager_Interface{
 
         private string $mode; //Mode (live/sandbox)
         private string $token; //Access token
@@ -38,10 +38,10 @@
             ];
         }
 
-        function createListing(WC_Product $product){
+        function create_listing(WC_Product $product){
             
-            $data = $this->productToListingRequestData($product);
-            $response = $this->listingRequest("POST", $data);
+            $data = $this->product_to_listing_request_data($product);
+            $response = $this->listing_request("POST", $data);
 
             error_log("res: ");
             error_log(print_r($response, true));
@@ -54,17 +54,17 @@
             return $response;
         }
 
-        function updateListing(WC_Product $product){
-            $data = $this->productToListingRequestData($product);
+        function update_listing(WC_Product $product){
+            $data = $this->product_to_listing_request_data($product);
 
             $listing_id = $product->get_meta("reverb_id");
 
-            $response = $this->listingRequest("PUT", $data, $listing_id);
+            $response = $this->listing_request("PUT", $data, $listing_id);
 
             return $response;
         }
 
-        function updateOrCreateListing(WC_Product $product){
+        function update_or_create_listing(WC_Product $product){
             //Get listing id from respective product
             $listing_id = $product->get_meta("reverb_id");
 
@@ -73,11 +73,11 @@
             //If id is returned, that means listing already exists, so we update it
             if($listing_id){
                 error_log("Updating listing");
-                $response = $this->updateListing($product);
+                $response = $this->update_listing($product);
             }
             //If no id is returned, that means listing hasn't been created, so we create it
             else{
-                $response = $this->createListing($product);
+                $response = $this->create_listing($product);
             }
 
             return $response;
@@ -92,7 +92,7 @@
          * 
          * @return string request response
          */
-        function listingRequest(string $request_type, $data = null, $id = null, $my = false){
+        function listing_request(string $request_type, $data = null, $id = null, $my = false){
 
             if($id){
                 $id = "/" . $id;
@@ -159,13 +159,13 @@
          * @param WC_Product $product target product
          * @param bool $save whether to save product. Default true
          */
-        function checkListingAndMarkSold(WC_Product $product, bool $save = true){
-            $listing_id = $this->getListingId($product);
+        function check_listing_and_mark_sold(WC_Product $product, bool $save = true){
+            $listing_id = $this->get_listing_ID($product);
 
             if(!$listing_id){
                 return null;
             }
-            $listing = $this->getListing($product);
+            $listing = $this->get_listing($product);
 
             $state = $listing["state"]["slug"];
             if($state == "ended"){
@@ -176,7 +176,7 @@
         /**
          * Get Reverb listing id from product. Returns null if id not set
          */
-        function getListingId(WC_Product $product){
+        function get_listing_ID(WC_Product $product){
             $listing_id = $product->get_meta("reverb_id");
 
             if($listing_id){
@@ -192,7 +192,7 @@
          * 
          * @return array data Assoc. array of data that is valid to use for listingRequest()
          */
-        function productToListingRequestData(WC_Product $product){
+        function product_to_listing_request_data(WC_Product $product){
             $data = [];
 
             //Get image urls
@@ -254,47 +254,47 @@
 
         
 
-        function deleteListing(WC_Product $product){
+        function delete_listing(WC_Product $product){
             $listing_id = $product->get_meta("reverb_id");
 
             if(!$listing_id){
                 return false;
             }
-            $response = $this->listingRequest("DELETE", null, $listing_id);
+            $response = $this->listing_request("DELETE", null, $listing_id);
             return $response;
         }
 
-        function endListing(WC_Product $product){
+        function end_listing(WC_Product $product){
             $listing_id = $product->get_meta("reverb_id");
 
             if(!$listing_id){
                 return false;
             }
             error_log("Before");
-            $response = $this->listingRequest("PUT", ["reason" => "not_sold"], $listing_id . "/state/end", true);
+            $response = $this->listing_request("PUT", ["reason" => "not_sold"], $listing_id . "/state/end", true);
             error_log("after");
             return $response;
         }
 
-        function endOrDeleteListing(WC_Product $product){
+        function end_or_delete_listing(WC_Product $product){
             $listing_id = $product->get_meta("reverb_id");
 
-            $listing = $this->getListing($product);
+            $listing = $this->get_listing($product);
 
 
             if(isset($listing["draft"])){
                 $draft = $listing["draft"];
                 if($draft == 1){
-                    $this->deleteListing($product);
+                    $this->delete_listing($product);
                 }else{
-                    $res = $this->endListing($product);
+                    $res = $this->end_listing($product);
                     error_log(print_r($res, true));
                     
                 }
             }
         }
 
-        function getListing(WC_Product $product){
+        function get_listing(WC_Product $product){
 
             $listing_id = $product->get_meta("reverb_id");
 
@@ -302,7 +302,7 @@
                 return false;
             }
 
-            return $this->listingRequest("GET", null, $listing_id);
+            return $this->listing_request("GET", null, $listing_id);
         }
 
         /**
@@ -312,14 +312,14 @@
          * 
          * @return bool true if deleted, false if not
          */
-        function checkListingAndDeleteProduct(WC_Product $product){
+        function check_listing_and_delete_product(WC_Product $product){
             $listing_id = $product->get_meta("reverb_id");
 
             if(!$listing_id){
                 return false;
             }
 
-            $listing = $this->getListing($product);
+            $listing = $this->get_listing($product);
             //error_log("aaa: ");
 
             if(!isset($listing["id"])){

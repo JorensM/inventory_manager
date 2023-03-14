@@ -5,7 +5,7 @@
     /**
      * Generate barcode
      */
-    function generateBarcode($data, $filename, $text = "Hello"){
+    function generate_barcode($data, $filename, $text = "Hello"){
         $generator = new Picqer\Barcode\BarcodeGeneratorPNG();
 
         $scale = 3;

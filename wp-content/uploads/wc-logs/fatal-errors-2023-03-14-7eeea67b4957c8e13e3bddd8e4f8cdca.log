@@ -7,3 +7,215 @@ Stack trace:
 #4 {main}
   thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php on line 1131
 
+2023-03-14T10:42:11+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($function) must be a valid callback, function "addCustomCategories" not found or invalid function name in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php:308
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-settings.php(617): do_action('init')
+#3 C:\xampp2\htdocs\inventory_manager\wp-config.php(96): require_once('C:\\xampp2\\htdoc...')
+#4 C:\xampp2\htdocs\inventory_manager\wp-load.php(50): require_once('C:\\xampp2\\htdoc...')
+#5 C:\xampp2\htdocs\inventory_manager\wp-admin\admin.php(34): require_once('C:\\xampp2\\htdoc...')
+#6 C:\xampp2\htdocs\inventory_manager\wp-admin\edit.php(10): require_once('C:\\xampp2\\htdoc...')
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php on line 308
+
+2023-03-14T10:43:10+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($function) must be a valid callback, function "addCustomCategories" not found or invalid function name in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php:308
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-settings.php(617): do_action('init')
+#3 C:\xampp2\htdocs\inventory_manager\wp-config.php(96): require_once('C:\\xampp2\\htdoc...')
+#4 C:\xampp2\htdocs\inventory_manager\wp-load.php(50): require_once('C:\\xampp2\\htdoc...')
+#5 C:\xampp2\htdocs\inventory_manager\wp-admin\admin.php(34): require_once('C:\\xampp2\\htdoc...')
+#6 C:\xampp2\htdocs\inventory_manager\wp-admin\edit.php(10): require_once('C:\\xampp2\\htdoc...')
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php on line 308
+
+2023-03-14T10:43:25+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($function) must be a valid callback, function "register_post_statuses" not found or invalid function name in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php:308
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-settings.php(617): do_action('init')
+#3 C:\xampp2\htdocs\inventory_manager\wp-config.php(96): require_once('C:\\xampp2\\htdoc...')
+#4 C:\xampp2\htdocs\inventory_manager\wp-load.php(50): require_once('C:\\xampp2\\htdoc...')
+#5 C:\xampp2\htdocs\inventory_manager\wp-admin\admin.php(34): require_once('C:\\xampp2\\htdoc...')
+#6 C:\xampp2\htdocs\inventory_manager\wp-admin\edit.php(10): require_once('C:\\xampp2\\htdoc...')
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php on line 308
+
+2023-03-14T10:44:20+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($function) must be a valid callback, function "register_post_statuses" not found or invalid function name in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php:308
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-settings.php(617): do_action('init')
+#3 C:\xampp2\htdocs\inventory_manager\wp-config.php(96): require_once('C:\\xampp2\\htdoc...')
+#4 C:\xampp2\htdocs\inventory_manager\wp-load.php(50): require_once('C:\\xampp2\\htdoc...')
+#5 C:\xampp2\htdocs\inventory_manager\wp-admin\admin.php(34): require_once('C:\\xampp2\\htdoc...')
+#6 C:\xampp2\htdocs\inventory_manager\wp-admin\edit.php(10): require_once('C:\\xampp2\\htdoc...')
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php on line 308
+
+2023-03-14T10:44:39+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($function) must be a valid callback, function "remove_menu_items" not found or invalid function name in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php:308
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-admin\admin.php(175): do_action('admin_init')
+#3 C:\xampp2\htdocs\inventory_manager\wp-admin\edit.php(10): require_once('C:\\xampp2\\htdoc...')
+#4 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php on line 308
+
+2023-03-14T10:44:57+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($function) must be a valid callback, function "add_product_views" not found or invalid function name in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php:308
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(205): WP_Hook->apply_filters(Array, Array)
+#1 C:\xampp2\htdocs\inventory_manager\wp-admin\includes\class-wp-list-table.php(482): apply_filters('views_edit-prod...', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-admin\edit.php(470): WP_List_Table->views()
+#3 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php on line 308
+
+2023-03-14T11:04:20+00:00 CRITICAL Uncaught Error: Call to undefined function checkListingsAndUpdateProducts() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php:8
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#4 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php on line 8
+
+2023-03-14T11:04:56+00:00 CRITICAL Uncaught Error: Call to a member function endOrDeleteListing() on null in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\before_product_delete.php:13
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): before_product_delete(265, Object(WP_Post))
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\post.php(3407): do_action('before_delete_p...', 265, Object(WP_Post))
+#4 C:\xampp2\htdocs\inventory_manager\wp-admin\post.php(325): wp_delete_post(265, true)
+#5 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\before_product_delete.php on line 13
+
+2023-03-14T11:07:47+00:00 CRITICAL Uncaught Error: Call to undefined function checkListingsAndUpdateProducts() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php:8
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#4 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php on line 8
+
+2023-03-14T11:07:47+00:00 CRITICAL Uncaught Error: Typed property Listing_Manager_Group::$selected_managers must not be accessed before initialization in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:94
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\before_product_delete.php(15): Listing_Manager_Group->end_or_delete_listing(Object(WC_Product_Simple))
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): before_product_delete(265, Object(WP_Post))
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\post.php(3407): do_action('before_delete_p...', 265, Object(WP_Post))
+#5 C:\xampp2\htdocs\inventory_manager\wp-admin\post.php(325): wp_delete_post(265, true)
+#6 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 94
+
+2023-03-14T11:08:54+00:00 CRITICAL Uncaught Error: Call to undefined function checkListingsAndUpdateProducts() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php:8
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#4 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php on line 8
+
+2023-03-14T11:10:02+00:00 CRITICAL Uncaught Error: Call to undefined function checkListingsAndUpdateProducts() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php:8
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#4 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php on line 8
+
+2023-03-14T11:12:04+00:00 CRITICAL Uncaught Error: Call to undefined function checkListingsAndUpdateProducts() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php:8
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#4 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php on line 8
+
+2023-03-14T11:14:41+00:00 CRITICAL Uncaught Error: Call to undefined function checkListingsAndUpdateProducts() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php:8
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#4 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php on line 8
+
+2023-03-14T11:17:19+00:00 CRITICAL Uncaught Error: Call to undefined function checkListingsAndUpdateProducts() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php:8
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#4 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php on line 8
+
+2023-03-14T11:19:36+00:00 CRITICAL Uncaught Error: Call to undefined function checkListingsAndUpdateProducts() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php:8
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#4 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php on line 8
+
+2023-03-14T11:21:38+00:00 CRITICAL Uncaught Error: Call to undefined function checkListingsAndUpdateProducts() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php:8
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#4 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php on line 8
+
+2023-03-14T11:22:41+00:00 CRITICAL Uncaught Error: Call to undefined function checkListingsAndUpdateProducts() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php:8
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#4 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php on line 8
+
+2023-03-14T11:23:55+00:00 CRITICAL Uncaught Error: Call to undefined function checkListingsAndUpdateProducts() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php:8
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#4 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php on line 8
+
+2023-03-14T11:25:04+00:00 CRITICAL Uncaught Error: Call to undefined function checkListingsAndUpdateProducts() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php:8
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#4 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php on line 8
+
+2023-03-14T11:29:58+00:00 CRITICAL Uncaught Error: Call to undefined function check_listings_and_update_products() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php:6
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#4 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php on line 6
+
+2023-03-14T11:31:00+00:00 CRITICAL Uncaught Error: Call to undefined function check_listings_and_update_products() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php:6
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#4 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php on line 6
+

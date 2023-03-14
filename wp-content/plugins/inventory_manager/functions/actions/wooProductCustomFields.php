@@ -2,7 +2,7 @@
 
 
 //Add custom fields to WooCommerce product editor
-function wooProductCustomFields(){
+function woo_product_custom_fields(){
     global $woocommerce, $post, $text_domain;
     
     //Render fields

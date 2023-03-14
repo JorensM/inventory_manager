@@ -1,6 +1,6 @@
 <?php
 
-    class AdminNotice
+    class Admin_Notice
     {
         const NOTICE_FIELD = 'my_admin_notice_message';
 

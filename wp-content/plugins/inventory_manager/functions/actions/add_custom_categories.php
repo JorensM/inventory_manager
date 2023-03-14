@@ -20,4 +20,4 @@ function add_custom_categories(){
 
    
 }
-add_action("init", "addCustomCategories");
+add_action("init", "add_custom_categories");
