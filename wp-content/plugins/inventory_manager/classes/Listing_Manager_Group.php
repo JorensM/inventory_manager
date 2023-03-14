@@ -131,8 +131,16 @@
     }
 
     $REVERB_TOKEN = get_option("reverb_token");
+    $EBAY_TOKEN = get_option("ebay_token");
+    $managers_arr = [];
 
-    $reverb_manager = new Reverb_Listing_Manager(["token" => $REVERB_TOKEN], "sandbox");
+    if($REVERB_TOKEN){
+        $managers_arr["reverb"] = new Reverb_Listing_Manager(["token" => $REVERB_TOKEN], "sandbox");
+    }
+
+    if($EBAY_TOKEN){
+        $managers_arr["ebay"] = new Ebay_Listing_Manager(["token" => $EBAY_TOKEN], "sandbox");
+    }
 
     $listing_managers = new Listing_Manager_Group(
         ["reverb" => $reverb_manager]
