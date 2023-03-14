@@ -1,0 +1,9 @@
+2023-03-14T09:13:45+00:00 CRITICAL Uncaught Error: Call to undefined function checkListingsAndDeleteProducts() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php:1131
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#1 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#2 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#3 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#4 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\inventory_manager.php on line 1131
+

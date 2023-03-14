@@ -8,7 +8,7 @@
      * 
      * @return void
      */
-    function checkListingsAndDeleteProducts(){
+    function checkListingsAndUpdateProducts(){
         $REVERB_TOKEN = get_option("reverb_token");
 
         $reverbManager = new ReverbListingManager(["token" => $REVERB_TOKEN], "sandbox");
@@ -17,5 +17,7 @@
 
         foreach($all_products as $product){
             $reverbManager->checkListingAndDeleteProduct($product);
+            $reverbManager->checkListingAndMarkSold($product, false);
+            $product->save();
         }
     }

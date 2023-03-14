@@ -1,6 +1,7 @@
 <?php
 
     require_once("IListingManager.php");
+    require_once(__DIR__."/../functions/markProductSold.php");
 
     class ReverbListingManager implements IListingManager{
 
@@ -150,6 +151,38 @@
 
             return $res_arr;
 
+        }
+
+        /**
+         * Check if Reverb has ended, and mark it as sold on WooCommerce if true
+         * 
+         * @param WC_Product $product target product
+         * @param bool $save whether to save product. Default true
+         */
+        function checkListingAndMarkSold(WC_Product $product, bool $save = true){
+            $listing_id = $this->getListingId($product);
+
+            if(!$listing_id){
+                return null;
+            }
+            $listing = $this->getListing($product);
+
+            $state = $listing["state"]["slug"];
+            if($state == "ended"){
+                markProductSold($product, $save);
+            }
+        }
+
+        /**
+         * Get Reverb listing id from product. Returns null if id not set
+         */
+        function getListingId(WC_Product $product){
+            $listing_id = $product->get_meta("reverb_id");
+
+            if($listing_id){
+                return $listing_id;
+            }
+            return null;
         }
 
         /**

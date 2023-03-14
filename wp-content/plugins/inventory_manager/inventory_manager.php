@@ -25,9 +25,7 @@ require_once("classes/AdminNotice.php");
 require_once("functions/generateBarcode.php");
 require_once("functions/reverbCreateListing.php");
 require_once("functions/reverbUpdateListing.php");
-require_once("functions/checkListingsAndDeleteProducts.php");
-
-require_once(__DIR__."/../woocommerce/includes/wc-notice-functions.php");
+require_once("functions/checkListingsAndUpdateProducts.php");
 
 
 
@@ -1126,8 +1124,11 @@ add_action('admin_notices', [new AdminNotice(), 'displayAdminNotice']);
 //--WP cron--//
 //Function to run
 function run_cron(){
+    global $reverbManager;
     //error_log("running cron");
-    checkListingsAndDeleteProducts();
+    checkListingsAndUpdateProducts();
+    //$reverbManager->checkListingAndMarkSold()
+
 }
 //Register function as action
 add_action("run_cron", "run_cron");
@@ -1217,7 +1218,7 @@ function registerPostStatuses(){
     register_post_status("sold",
         [
             "label" => _x("Sold", $text_domain),
-            "public" => true,
+            // "public" => true,
             "show_in_admin_all_list" => true,
             "show_in_admin_status_list" => true
         ]
@@ -1237,7 +1238,7 @@ function addProductViews( $views )
 
     $sold_count = wp_count_posts("product")->sold;
 
-    $views["sold"] = "<a href='edit.php?post_status=sold&post_type=product'>Sold</a><span class='count'>($sold_count)</span>";
+    $views["sold"] = "<a href='edit.php?post_status=sold&post_type=product'>Sold <span class='count'>($sold_count)</span></a>";
 
     return $views;
 }
