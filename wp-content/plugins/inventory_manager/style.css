@@ -1,0 +1,11 @@
+.activity-log{
+    border: 1px solid gray;
+}
+
+.activity-log-message {
+    padding: 8px 8px;
+}
+
+.activity-log-message:nth-child(2n) {
+    background-color: lightgray;
+}

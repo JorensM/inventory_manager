@@ -43,8 +43,8 @@
             $data = $this->product_to_listing_request_data($product);
             $response = $this->listing_request("POST", $data);
 
-            error_log("res: ");
-            error_log(print_r($response, true));
+            //error_log("res: ");
+            //error_log(print_r($response, true));
             
             if($response){
                 $product->add_meta_data("reverb_id", $response["listing"]["id"]);
@@ -72,7 +72,7 @@
 
             //If id is returned, that means listing already exists, so we update it
             if($listing_id){
-                error_log("Updating listing");
+                //error_log("Updating listing");
                 $response = $this->update_listing($product);
             }
             //If no id is returned, that means listing hasn't been created, so we create it
@@ -104,7 +104,7 @@
 
             $url = $this->api_url . $my . "listings" . $id;
 
-            error_log($url);
+            //error_log($url);
 
             $curl = curl_init($url);
             
@@ -115,8 +115,8 @@
                 "Accept-Version: 3.0" ,
                 "Authorization: Bearer $this->token"
             ];
-            error_log("headers: ");
-            error_log(print_r($headers, true));
+            //error_log("headers: ");
+            //error_log(print_r($headers, true));
             curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $request_type);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -125,8 +125,8 @@
 
             if($request_type == "POST" || $request_type == "PUT"){
                 $data_json = json_encode($data);
-                error_log("Data: ");
-                error_log(print_r($data, true));
+                //error_log("Data: ");
+                //error_log(print_r($data, true));
                 curl_setopt($curl, CURLOPT_POSTFIELDS, $data_json);
             }
 
@@ -135,14 +135,14 @@
             try{
                 $res = curl_exec($curl);
             }catch(Exception $e){
-                error_log("Error making listing request: ");
-                error_log($e->getMessage());
+                //error_log("Error making listing request: ");
+                //error_log($e->getMessage());
 
                 return null;
             }
 
-            error_log("request res: ");
-            error_log(print_r($res, true));
+            //error_log("request res: ");
+            //error_log(print_r($res, true));
 
             //error_log($res);
             
@@ -207,7 +207,7 @@
             $category_uuids = [];
             foreach($category_ids as $category_id){
                 $category = get_term_by("id", $category_id, "product_cat");//get_category($category_id);
-                error_log(print_r($category, true));
+                //error_log(print_r($category, true));
                 $uuid = $category->slug;
 
                 array_push($category_uuids, ["uuid" => $uuid]);
@@ -270,9 +270,9 @@
             if(!$listing_id){
                 return false;
             }
-            error_log("Before");
+            //error_log("Before");
             $response = $this->listing_request("PUT", ["reason" => "not_sold"], $listing_id . "/state/end", true);
-            error_log("after");
+            //error_log("after");
             return $response;
         }
 
@@ -288,7 +288,7 @@
                     $this->delete_listing($product);
                 }else{
                     $res = $this->end_listing($product);
-                    error_log(print_r($res, true));
+                    //error_log(print_r($res, true));
                     
                 }
             }

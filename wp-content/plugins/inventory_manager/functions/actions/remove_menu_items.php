@@ -2,7 +2,6 @@
 
 //Remove unneeded menu items from admin
 function remove_menu_items(){
-    global $submenu;
 
     /**
      * Top-level menus to remove
@@ -71,7 +70,6 @@ function remove_menu_items(){
         foreach($parent as $submenu_item){
             remove_submenu_page($parent_slug, $submenu_item);
         }
-        //remove_submenu_page($item[0], $item[1]);
     }
 
 }

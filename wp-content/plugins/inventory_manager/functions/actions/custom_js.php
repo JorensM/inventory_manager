@@ -4,9 +4,48 @@
 function custom_js() {
     $page_id = get_current_screen()->id;
 
-    //echo $page_id;
+    echo $page_id;
 
-    //Custom style for users page
+    if($page_id === 'dashboard') {
+
+        $ACTIVITY_MESSAGES = [];
+
+        $log_dir = __DIR__ . '/../../activity_log.txt';
+
+        $handle = fopen($log_dir, "r");
+        if ($handle) {
+            while (($line = fgets($handle)) !== false) {
+                array_push($ACTIVITY_MESSAGES, $line);
+            }
+
+            fclose($handle);
+        }
+
+        ?>
+            <script>
+
+                const ACTIVITY_MESSAGES = <?php echo json_encode($ACTIVITY_MESSAGES) ?>;
+
+                const ACTIVITY_LOG_HTML = `
+                    <h4>Activity log</h4>
+                    <div id='activity-log' class='activity-log'>
+                        aaa
+                    </div>
+                `;
+                document.getElementById('wpbody-content').insertAdjacentHTML('beforeend', ACTIVITY_LOG_HTML);
+
+                ACTIVITY_MESSAGES.forEach(message => {
+                    const MESSAGE_HTML = `
+                        <div class='activity-log-message'>
+                            ${message}
+                        </div>
+                    `
+                    document.getElementById('activity-log').insertAdjacentHTML('afterbegin', MESSAGE_HTML)
+                })
+            </script>
+        <?php
+    }
+    //Custom JS for users page
     if($page_id === "users"){
         ?>
             <script>

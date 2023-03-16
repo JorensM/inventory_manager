@@ -23,9 +23,38 @@ function publish_product_to_platforms($post_id, $post){
 
         //new DisplayNotice("Test", "warning");
 
+        //error_log("API RESPONSES: ");
+        //error_log( print_r( $responses["ebay"], true ) );
 
-        if(isset($responses["reverb"]["message"])){
-            Admin_Notice::displayInfo("<b>Reverb:</b> " . $responses["reverb"]["message"]);
+        $message_str = "";
+
+        if ( isset( $responses['reverb']['message']) ) {
+            $message_str .= '<b>Reverb: </b><br>' . $responses['reverb']['message'];
+            //Admin_Notice::displayInfo("<b>Reverb: </b>" . $responses["reverb"]["message"]);
+        }
+
+        
+
+        if( isset($responses['ebay']->Errors ) && count( $responses['ebay']->Errors ) > 0 ) {
+            $message_str .= "<br><b>eBay:</b><br>";
+            foreach ( $responses['ebay']->Errors as $message ) {
+                $message_str .= htmlspecialchars( $message->LongMessage ) . '<br>';
+            }
+
+            //$message_str = htmlspecialchars($message_str);
+
+            //error_log("ebay response is set: ");
+            //error_log($message_str);
+
+            //Admin_Notice::displayInfo("<b>eBay: </b>" . $message_str);
+        }
+
+        if( $responses['ebay']->Ack == 'Success' ){
+            $message_str .= '<br><b>eBay:</b><br>Listing created';
+        }
+
+        if ( $message_str != '' ) {
+            Admin_Notice::displayInfo($message_str);
         }
     }
 }

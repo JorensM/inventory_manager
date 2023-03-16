@@ -5,7 +5,7 @@
     function reverbUpdateListing($data, $token, $reverb_listing_id){
         $curl = curl_init("https://sandbox.reverb.com/api/listings/$reverb_listing_id");
 
-        error_log("Creating listing on reverb");
+        //error_log("Creating listing on reverb");
 
         $headers = [
             "Content-Type: application/hal+json",
@@ -14,7 +14,7 @@
             "Authorization: Bearer $token"
         ];
 
-        error_log(print_r($headers, true));
+        //error_log(print_r($headers, true));
 
         $final_data = $data;
 
@@ -23,8 +23,8 @@
         
         $final_data_json = json_encode($final_data);
 
-        error_log("final data: ");
-        error_log(print_r($final_data_json, true));
+        //error_log("final data: ");
+        //error_log(print_r($final_data_json, true));
 
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
@@ -36,12 +36,12 @@
         try{
             $res = curl_exec($curl);
         }catch(Exception $e){
-            error_log($e->getMessage());
+            //error_log($e->getMessage());
 
             return null;
         }
 
-        error_log($res);
+        //error_log($res);
         
         $res_arr = json_decode($res, true);
 

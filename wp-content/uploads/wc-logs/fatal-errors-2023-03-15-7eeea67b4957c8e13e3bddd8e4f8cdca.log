@@ -1,0 +1,312 @@
+2023-03-15T09:13:18+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T09:15:39+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T09:16:40+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T09:19:35+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T09:21:09+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T09:23:19+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T09:24:42+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T09:25:42+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T09:27:25+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T09:28:30+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T09:30:21+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T09:31:25+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T09:32:58+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T09:34:08+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T09:35:16+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T09:36:17+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T09:37:22+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T09:38:28+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T10:25:32+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T11:08:23+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T11:10:03+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T11:11:09+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T11:12:11+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T11:13:33+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T11:15:06+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+
+2023-03-15T11:17:23+00:00 CRITICAL Uncaught Error: Call to undefined method Ebay_Listing_Manager::check_listing_and_mark_sold() in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php:127
+Stack trace:
+#0 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php(113): Listing_Manager_Group->call_manager_fns('check_listing_a...', Object(WC_Product_Simple), false)
+#1 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\check_listings_and_update_products.php(21): Listing_Manager_Group->check_listing_and_mark_sold(Object(WC_Product_Simple), false)
+#2 C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\functions\actions\cron.php(8): check_listings_and_update_products()
+#3 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(308): run_cron()
+#4 C:\xampp2\htdocs\inventory_manager\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters('', Array)
+#5 C:\xampp2\htdocs\inventory_manager\wp-includes\plugin.php(565): WP_Hook->do_action(Array)
+#6 C:\xampp2\htdocs\inventory_manager\wp-cron.php(188): do_action_ref_array('run_cron', Array)
+#7 {main}
+  thrown in C:\xampp2\htdocs\inventory_manager\wp-content\plugins\inventory_manager\classes\Listing_Manager_Group.php on line 127
+

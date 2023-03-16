@@ -10,7 +10,7 @@ function on_product_status_sold($new_status, $old_status, $post){
         $product = wc_get_product($post->ID);
     }
     if($new_status == "sold"){
-        error_log("Status changed to sold, ending listing");
+        //error_log("Status changed to sold, ending listing");
         global $listing_managers;
         //global $reverbManager;
         $product = wc_get_product($post->ID);
@@ -28,8 +28,8 @@ function on_product_status_sold($new_status, $old_status, $post){
             Admin_Notice::displayInfo($responses["reverb"]["message"]);
         }
 
-        error_log("responses: ");
-        error_log(print_r($responses, true));
+        //error_log("responses: ");
+        //error_log(print_r($responses, true));
     }
     if($new_status != "sold" && $is_product){
         if($product->get_meta("sold")){

@@ -1,6 +1,7 @@
 <?php
 
     require_once("Reverb_Listing_Manager.php");
+    require_once("Ebay_Listing_Manager.php");
 
     class Listing_Manager_Group{
 
@@ -81,7 +82,7 @@
         function update_or_create_listing(WC_Product $product){
             $responses = [];
             foreach($this->selected_managers as $manager_id => $manager){
-                $response = $manager->updateOrCreateListing($product);
+                $response = $manager->update_or_create_listing($product);
                 $responses[$manager_id] = $response;
             }
 
@@ -135,13 +136,11 @@
     $managers_arr = [];
 
     if($REVERB_TOKEN){
-        $managers_arr["reverb"] = new Reverb_Listing_Manager(["token" => $REVERB_TOKEN], "sandbox");
+        $managers_arr['reverb'] = new Reverb_Listing_Manager( [ 'token' => $REVERB_TOKEN ], 'sandbox' );
     }
 
     if($EBAY_TOKEN){
-        $managers_arr["ebay"] = new Ebay_Listing_Manager(["token" => $EBAY_TOKEN], "sandbox");
+        $managers_arr['ebay'] = new Ebay_Listing_Manager( [ 'token' => $EBAY_TOKEN ], 'sandbox' );
     }
 
-    $listing_managers = new Listing_Manager_Group(
-        ["reverb" => $reverb_manager]
-    );
+    $listing_managers = new Listing_Manager_Group( $managers_arr );
