@@ -13,7 +13,22 @@ function render_reverb_token_field(){
 }
 
 function render_settings_section(){
-    //$ebay_oauth_url = "https://auth.sandbox.ebay.com/oauth2/authorize?client_id=JorensMe-Test-SBX-7ae27b979-8fb9e8f6&response_type=code&redirect_uri=Jorens_Merenjan-JorensMe-Test-S-vkhob&scope=https://api.ebay.com/oauth/api_scope https://api.ebay.com/oauth/api_scope/buy.order.readonly https://api.ebay.com/oauth/api_scope/buy.guest.order https://api.ebay.com/oauth/api_scope/sell.marketing.readonly https://api.ebay.com/oauth/api_scope/sell.marketing https://api.ebay.com/oauth/api_scope/sell.inventory.readonly https://api.ebay.com/oauth/api_scope/sell.inventory https://api.ebay.com/oauth/api_scope/sell.account.readonly https://api.ebay.com/oauth/api_scope/sell.account https://api.ebay.com/oauth/api_scope/sell.fulfillment.readonly https://api.ebay.com/oauth/api_scope/sell.fulfillment https://api.ebay.com/oauth/api_scope/sell.analytics.readonly https://api.ebay.com/oauth/api_scope/sell.marketplace.insights.readonly https://api.ebay.com/oauth/api_scope/commerce.catalog.readonly https://api.ebay.com/oauth/api_scope/buy.shopping.cart https://api.ebay.com/oauth/api_scope/buy.offer.auction https://api.ebay.com/oauth/api_scope/commerce.identity.readonly https://api.ebay.com/oauth/api_scope/commerce.identity.email.readonly https://api.ebay.com/oauth/api_scope/commerce.identity.phone.readonly https://api.ebay.com/oauth/api_scope/commerce.identity.address.readonly https://api.ebay.com/oauth/api_scope/commerce.identity.name.readonly https://api.ebay.com/oauth/api_scope/commerce.identity.status.readonly https://api.ebay.com/oauth/api_scope/sell.finances https://api.ebay.com/oauth/api_scope/sell.item.draft https://api.ebay.com/oauth/api_scope/sell.payment.dispute https://api.ebay.com/oauth/api_scope/sell.item https://api.ebay.com/oauth/api_scope/sell.reputation https://api.ebay.com/oauth/api_scope/sell.reputation.readonly https://api.ebay.com/oauth/api_scope/commerce.notification.subscription https://api.ebay.com/oauth/api_scope/commerce.notification.subscription.readonly";
+    
+    $ebay_oauth_url = "https://auth.ebay.com/oauth2/authorize?client_id=AllanHar-Inventor-PRD-bcd6d2723-74d77282&response_type=code&redirect_uri=Allan_Harrell-AllanHar-Invent-jxrrf&scope=https://api.ebay.com/oauth/api_scope https://api.ebay.com/oauth/api_scope/sell.marketing.readonly https://api.ebay.com/oauth/api_scope/sell.marketing https://api.ebay.com/oauth/api_scope/sell.inventory.readonly https://api.ebay.com/oauth/api_scope/sell.inventory https://api.ebay.com/oauth/api_scope/sell.account.readonly https://api.ebay.com/oauth/api_scope/sell.account https://api.ebay.com/oauth/api_scope/sell.fulfillment.readonly https://api.ebay.com/oauth/api_scope/sell.fulfillment https://api.ebay.com/oauth/api_scope/sell.analytics.readonly https://api.ebay.com/oauth/api_scope/sell.finances https://api.ebay.com/oauth/api_scope/sell.payment.dispute https://api.ebay.com/oauth/api_scope/commerce.identity.readonly https://api.ebay.com/oauth/api_scope/commerce.notification.subscription https://api.ebay.com/oauth/api_scope/commerce.notification.subscription.readonly";
+
+    $session_id = session_id();
+    $ebay_auth_url = "https://signin.ebay.com/ws/eBayISAPI.dll?SignIn&runame=Allan_Harrell-AllanHar-Invent-jxrrf&SessID=$session_id";
+
+    $ebay_regen_url = 'https://wordpress-963862-3367102.cloudwaysapps.com/wp-json/inv-mgr/ebay_regenerate';
+
+    ?>
+
+    <a href='<?php echo $ebay_oauth_url ?>'>Link with ebay</a>
+    <br>
+    <a href='<?php echo $ebay_regen_url ?>'>Regen eBay token</a>
+    <!-- <a href='<?php echo $ebay_auth_url ?>'>Link with ebay second</a> -->
+
+    <?php
 
     //echo "abc";
 }
