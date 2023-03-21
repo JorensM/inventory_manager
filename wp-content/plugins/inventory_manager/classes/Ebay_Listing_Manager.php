@@ -32,9 +32,10 @@
 
         function __construct(array $auth_data, string $mode = 'sandbox') {
             $this->token = $auth_data["token"];
+            //$this->token = "123";
             $this->mode = $mode;
             if ( $mode == 'live' ) {
-                $this->api_url = ""; // TODO: Add live url
+                $this->api_url = "https://api.ebay.com/ws/api.dll";
             }
             else{
                 $this->api_url = "https://api.sandbox.ebay.com/ws/api.dll";
@@ -126,8 +127,17 @@
                     </PrimaryCategory>
                     <PostalCode>95125</PostalCode>
                     <ShipToLocations>None</ShipToLocations>
+                    <PictureDetails>
+                        <PictureURL>https://i.imgur.com/WJlG8F6.png</PictureURL>
+                    </PictureDetails>
+                    <ReturnPolicy>
+                        <ReturnsAcceptedOption>ReturnsAccepted</ReturnsAcceptedOption>
+                        <RefundOption>MoneyBack</RefundOption>
+                        <ReturnsWithinOption>Days_30</ReturnsWithinOption>
+                        <ShippingCostPaidByOption>Buyer</ShippingCostPaidByOption>
+                    </ReturnPolicy>
                 </Item>
-            ";
+            ";// TODO: Replace PictureURL with actual image urls
             return $xml;
         }
 

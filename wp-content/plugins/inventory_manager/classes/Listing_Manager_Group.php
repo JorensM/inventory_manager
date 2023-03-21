@@ -139,8 +139,10 @@
         $managers_arr['reverb'] = new Reverb_Listing_Manager( [ 'token' => $REVERB_TOKEN ], 'sandbox' );
     }
 
+    echo "abc123";
     if($EBAY_TOKEN){
-        $managers_arr['ebay'] = new Ebay_Listing_Manager( [ 'token' => $EBAY_TOKEN ], 'sandbox' );
+        echo $EBAY_TOKEN;
+        $managers_arr['ebay'] = new Ebay_Listing_Manager( [ 'token' => $EBAY_TOKEN ], 'live' );
     }
 
     $listing_managers = new Listing_Manager_Group( $managers_arr );

@@ -53,8 +53,12 @@ function publish_product_to_platforms($post_id, $post){
             $message_str .= '<br><b>eBay:</b><br>Listing created';
         }
 
+        //$message_str .= print_r($responses, true);
+
         if ( $message_str != '' ) {
             Admin_Notice::displayInfo($message_str);
+        }else {
+            Admin_Notice::displayInfo('empty');
         }
     }
 }
