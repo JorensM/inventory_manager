@@ -42,7 +42,7 @@ function custom_product_list_columns_content($column_id, $post_id){
                 $status_str = "Draft";
                 break;
             default:
-                $status_str = "Unknown";
+                $status_str = $status;
                 break;
         }
         echo __($status_str, 'inv-mgr');

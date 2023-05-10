@@ -35,10 +35,9 @@ function custom_js_all() {
  * Custom JS for dashboard page
  */
 function custom_js_dashboard() {
+    //Store activity log messages in an array
     $ACTIVITY_MESSAGES = [];
-
     $log_dir = __DIR__ . '/../../activity_log.txt';
-
     $handle = fopen($log_dir, "r");
     if ($handle) {
         while (($line = fgets($handle)) !== false) {
@@ -48,19 +47,22 @@ function custom_js_dashboard() {
         fclose($handle);
     }
 
+    //JS
     ?>
         <script>
-
+            //--Render activity log--//
+            //Store activity log messages in a JS array
             const ACTIVITY_MESSAGES = <?php echo json_encode($ACTIVITY_MESSAGES) ?>;
-
+            //HTML for activity log
             const ACTIVITY_LOG_HTML = `
                 <h4>Activity log</h4>
                 <div id='activity-log' class='activity-log'>
                     
                 </div>
             `;
+            //Add activity log HTML to dashboard
             document.getElementById('wpbody-content').insertAdjacentHTML('beforeend', ACTIVITY_LOG_HTML);
-
+            //Add activity log messages from the previously declared variable to the activity log element
             ACTIVITY_MESSAGES.forEach(message => {
                 const MESSAGE_HTML = `
                     <div class='activity-log-message'>
@@ -79,8 +81,8 @@ function custom_js_dashboard() {
 function custom_js_users() {
     ?>
         <script>
-            console.log("test");
-            document.getElementById("posts").innerHTML = "Products";
+            //Change 'Posts' column label to 'Products';
+            document.getElementById('posts').innerHTML = 'Products';
         </script>
     <?php
 }
@@ -89,25 +91,32 @@ function custom_js_users() {
  * Custom JS for product page
  */
 function custom_js_product() {
+    //Get listing managers singelton
     global $listing_managers;
 
     $product = wc_get_product();
 
-    //Get product links for each platform
+    //--Get product links for each platform--//
+    //Get eBay's product ID
     $product_ebay_id = $product->get_meta('ebay_id');
+    //Generate product link using the product ID
     $product_ebay_url = "https://www.ebay.com/itm/$product_ebay_id";
+
+    //Get Reverb's product link from product's meta data (Reverb's product link gets stored in the meta data)
     $product_reverb_url = $product->get_meta('reverb_link');
 
+    //Get eBay and Reverb listings
     $ebay_listing = $listing_managers->getManager('ebay')->get_listing($product);
     $reverb_listing = $listing_managers->getManager('reverb')->get_listing($product);
 
+    //Strings for displaying status for different platforms
     $ebay_status = '';
     $reverb_status = '';
 
+    //If listing exists for corresponding platform, set its status string according to the listing's status string
     if( $ebay_listing ) {
         $ebay_status = $ebay_listing->Item->SellingStatus->ListingStatus;
     }
-
     if( $reverb_listing ) {
         $reverb_status = $reverb_listing['state']['description'];
     }
@@ -116,19 +125,31 @@ function custom_js_product() {
 
         <script>
 
+            //--DOM elements--//
+            //Status dropdown element
             const status_dropdown = document.getElementById("post_status");
 
-            <?php
-                if(wc_get_product()->get_status() == 'sold'){
-                    ?>
-                        document.getElementById("post-status-display").innerHTML = "<b>Sold</b>";
-                    <?php
-                }
-            ?>
-            status_dropdown.insertAdjacentHTML("beforeend", "<option value='sold'>Sold</option>");
+            //Product editor form
+            const form = document.getElementById("post");
 
-            //Generate title based on entered information
-            function generateTitle(input_element){
+            //Categories list elements
+            const categories_pop = document.getElementById("product_cat-pop");
+            const categories_all = document.getElementById("product_cat-all");
+
+            //Checkboxes for categories
+            const inputs_pop = categories_pop.querySelectorAll("input[type='checkbox']");
+            const inputs_all = categories_all.querySelectorAll("input[type='checkbox']");
+
+            //Title elements
+            const title_input = document.getElementById("title");
+            const title_div = document.getElementById("titlediv");
+
+            //--Functions--//
+
+            /**
+             *  Generate title based on entered information
+             */
+            function generateTitle( input_element ) {
                 //Add a string to an array if the string is set and not empty
                 function addStrIfNotEmpty(str, arr){
                     if(str && str !== ""){
@@ -136,14 +157,11 @@ function custom_js_product() {
                     }
                 }
 
+                //Get input field values that will be used to generate title
                 let brand_info = document.getElementById("brand_info").value;
                 let model_info = document.getElementById("model_info").value;
                 let year = document.getElementById("year_field").value;
                 let color = document.getElementById("color_field").value;
-
-                // model_info = addSpaceOrEmpty(model_info);
-                // year_info = addSpaceOrEmpty(year);
-                // color_info = addSpaceOrEmpty(color);
 
                 //Turn info into array of strings
                 let title_parts = [];
@@ -161,18 +179,59 @@ function custom_js_product() {
                 }
             }
 
-            const form = document.getElementById("post");
+            /**
+             * Prefill data. for debug
+             */
+            function prefillData() {
+                document.getElementById("_regular_price").value = 50;
+                document.getElementById("brand_info").value = 21;
+                document.getElementById("model_info").value = 21;
+                document.getElementById("year_field").value = 2000;
+                document.getElementById("notes_field").value = "abcd";
+                document.getElementById("in-product_cat-18").checked = true;
+                document.getElementById("in-product_cat-19").checked = true;
+            }
 
-            const categories_pop = document.getElementById("product_cat-pop");
-            const categories_all = document.getElementById("product_cat-all");
+            /**
+             * Check if at least one category has been selected. true if selected, false otherwise
+             */
+            function isCategorySelected() {
+                let has_category = false;
 
-            const inputs_pop = categories_pop.querySelectorAll("input[type='checkbox']");
-            const inputs_all = categories_all.querySelectorAll("input[type='checkbox']");
+                for(let i = 0; i < inputs_pop.length; i++) {
+                    let item = inputs_pop[i];
+                    if(item.value === "15"){
+                        console.log ("Is uncategorized");
+                    }
+                    if(item.checked && item.value !== "15"){
+                        has_category = true;
+                        break;
+                    }
+                }
+                
+                if(!has_category){
+                    for(let i = 0; i < inputs_all.length; i++) {
+                        let item = inputs_all[i];
+                        if(item.checked && item.value !== "15"){
+                            has_category = true;
+                            break;
+                        }
+                    }
+                }
 
-            const title_input = document.getElementById("title");
-            const title_div = document.getElementById("titlediv");
+                return has_category;
+            }
 
-            
+            <?php
+                //If product status is sold, change the status in the product editor to 'Sold' (must be done manually)
+                if(wc_get_product()->get_status() == 'sold'){
+                    ?>
+                        document.getElementById("post-status-display").innerHTML = "<b>Sold</b>";
+                    <?php
+                }
+            ?>
+            //Add 'Sold' option to the status dropdown
+            status_dropdown.insertAdjacentHTML("beforeend", "<option value='sold'>Sold</option>");
 
             //Make title field required
             title_input.required = true;
@@ -203,15 +262,7 @@ function custom_js_product() {
                 
             `);
 
-            function prefillData(){
-                document.getElementById("_regular_price").value = 50;
-                document.getElementById("brand_info").value = 21;
-                document.getElementById("model_info").value = 21;
-                document.getElementById("year_field").value = 2000;
-                document.getElementById("notes_field").value = "abcd";
-                document.getElementById("in-product_cat-18").checked = true;
-                document.getElementById("in-product_cat-19").checked = true;
-            }
+            
 
             //Prevent "are you sure you want to leave this page" popup
             window.addEventListener('beforeunload', function (event) {
@@ -220,35 +271,8 @@ function custom_js_product() {
 
             //On form submit
             form.addEventListener("submit", (e) => {
-                //console.log(e);
-                //e.preventDefault();
-                //return;
-
-
                 //Check if category is specified, and cancel form submission if false
-                let has_category = false;
-
-                for(let i = 0; i < inputs_pop.length; i++) {
-                    let item = inputs_pop[i];
-                    if(item.value === "15"){
-                        console.log ("Is uncategorized");
-                    }
-                    if(item.checked && item.value !== "15"){
-                        has_category = true;
-                        break;
-                    }
-                }
-                
-                if(!has_category){
-                    for(let i = 0; i < inputs_all.length; i++) {
-                        let item = inputs_all[i];
-                        if(item.checked && item.value !== "15"){
-                            has_category = true;
-                            break;
-                        }
-                    }
-                }
-
+                const has_category = isCategorySelected();
                 if(!has_category){
                     e.preventDefault();
                     alert("Please select a category!");
