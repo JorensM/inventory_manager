@@ -1,6 +1,8 @@
 <?php
-    require_once plugin_dir_path(__FILE__) . "../const.php";
-    require_once plugin_dir_path(__FILE__) . "../classes/Listing_Manager_Group.php";
+
+    //--Requires--//
+    require_once plugin_dir_path( __FILE__ ) . '../const.php';
+    require_once plugin_dir_path( __FILE__ ) . '../classes/Listing_Manager_Group.php';
 
     /**
      * Checks all platforms for if any of the listings have been deleted, and delete them if true

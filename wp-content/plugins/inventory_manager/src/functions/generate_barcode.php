@@ -2,7 +2,6 @@
 
     require_once __DIR__ . '/../../vendor/autoload.php';
 
-
     /*
         Get the center position of text relative to a container box
     */

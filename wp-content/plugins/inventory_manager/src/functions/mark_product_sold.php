@@ -1,6 +1,6 @@
 <?php
 
-    require_once(__DIR__."/../classes/enums/ProductStatusEnum.php");
+    require_once __DIR__ . '/../classes/enums/ProductStatusEnum.php';
     require_once 'product_link.php';
     
 
