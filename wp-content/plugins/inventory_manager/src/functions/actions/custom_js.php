@@ -144,6 +144,9 @@ function custom_js_product() {
             const title_input = document.getElementById("title");
             const title_div = document.getElementById("titlediv");
 
+            //Summary box
+            const summary_box = document.getElementById('misc-publishing-actions');
+
             //--Functions--//
 
             /**
@@ -222,6 +225,47 @@ function custom_js_product() {
                 return has_category;
             }
 
+            /**
+             * Add listing link to summary box
+             * 
+             * @param string label link label
+             * @param string link url to listing
+             * @param string status status of listing
+             * 
+             * @return void
+             */
+            function addPlatformLinkToSummary( label, link, status ) {
+                const linkHTML = `<a href='${link}'>${label}</a>`;
+                const statusHTML = `<b>Status: </b> ${status}`;
+                summary_box.insertAdjacentHTML('beforeend', `
+                    <div class='misc-pub-section'>
+                        ${linkHTML}
+                        <br>
+                        ${statusHTML}
+                    </div>
+                `);
+            }
+
+
+            //--Event listeners--//
+
+            //Prevent "are you sure you want to leave this page" popup
+            window.addEventListener('beforeunload', function (event) {
+                event.stopImmediatePropagation();
+            });
+
+            //On form submit
+            form.addEventListener("submit", (e) => {
+                //Check if category is specified, and cancel form submission if false
+                const has_category = isCategorySelected();
+                if(!has_category){
+                    e.preventDefault();
+                    alert("Please select a category!");
+                }
+
+            })
+
+            
             <?php
                 //If product status is sold, change the status in the product editor to 'Sold' (must be done manually)
                 if(wc_get_product()->get_status() == 'sold'){
@@ -262,40 +306,11 @@ function custom_js_product() {
                 
             `);
 
-            
-
-            //Prevent "are you sure you want to leave this page" popup
-            window.addEventListener('beforeunload', function (event) {
-                event.stopImmediatePropagation();
-            });
-
-            //On form submit
-            form.addEventListener("submit", (e) => {
-                //Check if category is specified, and cancel form submission if false
-                const has_category = isCategorySelected();
-                if(!has_category){
-                    e.preventDefault();
-                    alert("Please select a category!");
-                }
-
-            })
-
-            summary_box = document.getElementById('misc-publishing-actions');
-
+            //Add listing links
             addPlatformLinkToSummary('Reverb listing', '<?php echo $product_reverb_url ?>', '<?php echo $reverb_status; ?>');
             addPlatformLinkToSummary('eBay listing', '<?php echo $product_ebay_url ?>', '<?php echo $ebay_status; ?>');
 
-            function addPlatformLinkToSummary(label, link, status) {
-                const linkHTML = `<a href='${link}'>${label}</a>`;
-                const statusHTML = `<b>Status: </b> ${status}`;
-                summary_box.insertAdjacentHTML('beforeend', `
-                    <div class='misc-pub-section'>
-                        ${linkHTML}
-                        <br>
-                        ${statusHTML}
-                    </div>
-                `);
-            }
+            
         </script>
 
     <?php
@@ -360,12 +375,16 @@ function custom_js_product() {
 function custom_js_profile() {
     ?>
         <script>
+            //--DOM elements--//
+            //All h2 elements
             const divs = document.getElementsByTagName("h2");
 
+            //Loop through all h2 elements
             for (let x = 0; x < divs.length; x++) {
                 const div = divs[x];
                 const content = div.textContent.trim();
-            
+                
+                //If h2 contains any of the following texts, hide it
                 if (content == 'Customer billing address' || content == 'Customer shipping address') {
                     div.style.display = 'none';
                 }
