@@ -1,0 +1,26 @@
+.activity-log{
+    border: 1px solid gray;
+}
+
+.activity-log-message {
+    padding: 8px 8px;
+}
+
+.activity-log-message:nth-child(2n) {
+    background-color: lightgray;
+}
+
+.guide-content {
+    width: 600px;
+}
+
+.guide-ul {
+    list-style: disc;
+    padding-left: 46px;
+}
+
+@media screen and (max-width: 600px) {
+    .guide-content {
+        width: 100%;
+    }
+}
