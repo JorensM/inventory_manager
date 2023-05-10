@@ -10,13 +10,12 @@
  * @return void
  */
 function custom_js() {
-
+    //Call function for JS that applies to all pages
     custom_js_all();
 
+    //If exists, call function by name custom_js_<CURRENT-PAGE-ID>()
     $sanitized_page_id = get_sanitized_page_id();
-
-    $fn_name = "custom_css_$sanitized_page_id";
-
+    $fn_name = "custom_js_$sanitized_page_id";
     if ( function_exists( $fn_name ) ) {
         $fn_name();
     }

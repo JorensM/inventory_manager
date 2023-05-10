@@ -11,45 +11,15 @@ require_once __DIR__ . '/../get_sanitized_page_id.php';
  * @return void
  */
 function custom_css() {
-    //Store page id in a variable
-    $page_id = get_current_screen()->id;
-
-    //echo $page_id;
-
+    //Call function for CSS that applies to all pages
     custom_css_all();
 
+    //If exists, call function by name custom_css_<CURRENT-PAGE-ID>()
     $sanitized_page_id = get_sanitized_page_id();
-
     $fn_name = "custom_css_$sanitized_page_id";
-
     if ( function_exists( $fn_name ) ) {
         $fn_name();
     }
-
-    // //Apply CSS to product page
-    // if( $page_id === 'product' ) {
-    //     custom_css_product();
-    // }
-
-    // //Apply CSS to user page
-    // if($page_id === "user"){
-    //     custom_css_user();
-    // }
-
-    // //Apply CSS to profile page
-    // if($page_id === "profile"){
-    //     custom_css_profile();
-    // }
-
-    // //Apply CSS to dashboard
-    // if($page_id === "dashboard"){
-    //     custom_css_dashboard();
-    // }
-
-    // if($page_id === "edit-product"){
-    //     custom_css_edit_product();
-    // }
-
 }
 
 //Add action for custom CSS
