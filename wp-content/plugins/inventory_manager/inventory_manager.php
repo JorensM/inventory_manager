@@ -31,18 +31,20 @@ foreach ( $actions_files as $action_file ) {
     require_once( $action_file );   
 }
 
-$google_api_key = 'AIzaSyDE6vhvjcgwNYZUnN8kSVJ_DJwWm8qRDb4';
-$spreadsheet_id = '10j-z9e95OxpKApmGaJON_V7WrUEag02UuKwL3K1G15o';
-$sheet_name = 'Sheet1';
+// $google_api_key = 'AIzaSyDE6vhvjcgwNYZUnN8kSVJ_DJwWm8qRDb4';
+// $spreadsheet_id = '10j-z9e95OxpKApmGaJON_V7WrUEag02UuKwL3K1G15o';
+// $sheet_name = 'Sheet1';
 
 
-$google_sheets = new Google_Sheets_Products();
+// $google_sheets = new Google_Sheets_Products();
 
-$google_sheets->set_spreadsheet( $spreadsheet_id );
-$google_sheets->set_sheet( $sheet_name );
-$res = $google_sheets->add_product();//$google_sheets->generate_access_token();//$google_sheets->add_product();
+// $google_sheets->set_spreadsheet( $spreadsheet_id );
+// $google_sheets->set_sheet( $sheet_name );
+//$res = $google_sheets->add_product( new WC_Product(132) );//$google_sheets->generate_access_token();//$google_sheets->add_product();
 
-echo '<pre>';
-print_r($res);
-echo '</pre>';
+// echo 'row count: ';
+// echo '<br>';
+// echo '<pre>';
+// print_r($res);
+// echo '</pre>';
 

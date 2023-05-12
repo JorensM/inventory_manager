@@ -34,11 +34,15 @@
         }
 
         function get_sheet_url() {
-            return $this->api_url . $this->spreadsheet_id . '/' . $this->sheet_name;
+            return $this->get_spreadsheet_url() . '/' . $this->sheet_name;
         }
         
         function get_values_url() {
-            return $this->api_url . $this->spreadsheet_id . '/values/' . $this->sheet_name;
+            return $this->get_spreadsheet_url() . '/values/' . $this->sheet_name;
+        }
+
+        function get_spreadsheet_url() {
+            return $this->api_url . $this->spreadsheet_id;
         }
 
         function generate_access_token() {
@@ -72,16 +76,77 @@
             return null;
         }
 
-        function append( $values ) {
+        /**
+         * Get sheet by name. if name not specified, current sheet will be returned
+         * 
+         * @param string $sheet_name name of sheet to return. If null, current sheet will be returned
+         * 
+         * @return any API response as assoc. array, or null on error
+         */
+        function get_sheet( string $sheet_name = null ) {
+
+            $sheet_name = $sheet_name || $this->sheet_name;
 
             $this->generate_access_token();
 
-            $url = $this->get_values_url() . '!A1:C3:append?valueInputOption=RAW';
+            $url = $this->get_spreadsheet_url();
+
+            $headers = array(
+                "Authorization: Bearer $this->access_token",
+                'Content-Type: application/json'
+            );
+
+            $res = curl_request($url, 'GET', null, $headers);
+
+            if ( isset( $res['sheets'] ) ) {
+                
+                foreach ( $res['sheets'] as $sheet ) {
+                    if( isset( $sheet['properties']['title'] ) && $sheet['properties']['title'] == $sheet_name){
+                        return $sheet;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        function get_row_count( string $sheet_name = null ) {
+            
+            $sheet = $this->get_sheet( $sheet_name );
+
+            // echo '<pre>';
+            // print_r( $sheet );
+            // echo '</pre>';
+
+            if ( $sheet ) {
+                return $sheet['properties']['gridProperties']['rowCount'];
+            }
+
+            // echo '<pre>';
+            // print_r( $res );
+            // echo '</pre>';
+
+            // echo '<br>';
+            // echo $url;
+            // echo '<br>';
+            // echo 'test';
+
+            return null;
+
+        }
+
+        function append( $values, string $row_length = 'D' ) {
+
+            $this->generate_access_token();
+
+            $row_count = $this->get_row_count();
+
+            $url = $this->get_values_url() . "!A1:$row_length$row_count:append?valueInputOption=RAW";
 
             //echo $url;
 
             $data = array(
-                'range' => 'Sheet1!A1:C3',
+                'range' => "Sheet1!A1:$row_length$row_count",
                 'majorDimension' => 'ROWS',
                 'values' => $values
                 // 'resource' => array(

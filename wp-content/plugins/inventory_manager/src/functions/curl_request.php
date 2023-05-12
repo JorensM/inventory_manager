@@ -29,8 +29,11 @@
         try {
             $response = curl_exec( $curl );
         } catch ( Exception $e ) {
+            echo 'curl error';
             return null;
         }
+
+        //print_r($response);
 
         return json_decode( $response, true );
 

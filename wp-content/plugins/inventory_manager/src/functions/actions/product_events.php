@@ -9,6 +9,7 @@
     //Classes
     require_once __DIR__ . '/../../classes/Admin_Notice.php';
     require_once __DIR__ . '/../../classes/Listing_Manager_Group.php';
+    require_once __DIR__ . '/../../classes/class-google-sheets-products.php';
 
     //Functions
     require_once __DIR__ . '/../generate_barcode.php';
@@ -21,6 +22,8 @@
      * Called when product gets created/updated
      */
     function on_product_save( $product_id ) {
+        global $google_sheets;
+
         $product = wc_get_product($product_id);
 
         if($product->get_sku()){
@@ -35,6 +38,10 @@
                 $product->get_meta('product_serial_number')
             );
         }
+
+        $res = $google_sheets->add_product( $product );
+
+        log_activity('sheets', '<pre>' . print_r($res, true) . '</pre>');
     }
 
     add_action( 'woocommerce_update_product', 'on_product_save', 10, 1 );
