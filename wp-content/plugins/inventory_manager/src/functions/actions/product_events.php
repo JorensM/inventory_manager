@@ -39,9 +39,9 @@
             );
         }
 
-        $res = $google_sheets->add_product( $product );
+        $res = $google_sheets->update_or_add_product( $product );
 
-        log_activity('sheets', '<pre>' . print_r($res, true) . '</pre>');
+        //log_activity('sheets', '<pre>' . print_r($res, true) . '</pre>');
     }
 
     add_action( 'woocommerce_update_product', 'on_product_save', 10, 1 );

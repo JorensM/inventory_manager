@@ -42,6 +42,13 @@ foreach ( $actions_files as $action_file ) {
 // $google_sheets->set_sheet( $sheet_name );
 //$res = $google_sheets->add_product( new WC_Product(132) );//$google_sheets->generate_access_token();//$google_sheets->add_product();
 
+// $res = $google_sheets->get_row_number_by_product_id( 132 );
+
+// echo 'row number: ';
+// echo '<br>';
+// echo '<pre>';
+// print_r($res);
+// echo '</pre>';
 // echo 'row count: ';
 // echo '<br>';
 // echo '<pre>';
