@@ -192,10 +192,11 @@
     if($EBAY_TOKEN){
         $mode = get_option('ebay_mode') || 'sandbox';
         $managers_arr['ebay'] = new Ebay_Listing_Manager( [ 'token' => $EBAY_TOKEN ], 'live' );
+        //Refresh eBay's user access token if it is expired
+        $managers_arr['ebay']->maybe_refresh_token();
     }
 
-    //Refresh eBay's user access token if it is expired
-    $managers_arr['ebay']->maybe_refresh_token();
+    
 
     //Create Listing_Manager_Group singleton and register the managers with the $managers_arr
     $listing_managers = new Listing_Manager_Group( $managers_arr );
