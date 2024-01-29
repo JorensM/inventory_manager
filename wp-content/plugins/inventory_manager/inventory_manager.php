@@ -23,6 +23,9 @@ require_once 'src/functions/curl_request.php';
 //Constants
 require_once 'src/const.php' ;
 
+if(!is_plugin_active("woocommerce/woocommerce.php")) {
+    throw new Error('Inventory Manager requires WooCommerce to work');
+}
 
 //Actions
 //Require all php files in the functions/actions folder
