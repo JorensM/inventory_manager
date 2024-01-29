@@ -23,9 +23,20 @@ require_once 'src/functions/curl_request.php';
 //Constants
 require_once 'src/const.php' ;
 
-if(!is_plugin_active("woocommerce/woocommerce.php")) {
-    throw new Error('Inventory Manager requires WooCommerce to work');
+function check_dependencies() {
+    if(!is_plugin_active("woocommerce/woocommerce.php")) {
+        Admin_Notice::displayError('Inventory Manager requires WooCommerce to work');
+        deactivate_plugins('inventory_manager/inventory_manager.php');
+    }
 }
+
+function on_admin_init() {
+    check_dependencies();
+}
+
+add_action( 'admin_init', 'on_admin_init' );
+
+
 
 //Actions
 //Require all php files in the functions/actions folder
@@ -33,6 +44,7 @@ $actions_files = glob( __DIR__ . '/src/functions/actions/*.php' );
 foreach ( $actions_files as $action_file ) {
     require_once( $action_file );   
 }
+
 
 // $google_api_key = 'AIzaSyDE6vhvjcgwNYZUnN8kSVJ_DJwWm8qRDb4';
 // $spreadsheet_id = '10j-z9e95OxpKApmGaJON_V7WrUEag02UuKwL3K1G15o';

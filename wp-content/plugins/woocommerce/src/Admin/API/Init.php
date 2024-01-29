@@ -5,17 +5,19 @@
 
 namespace Automattic\WooCommerce\Admin\API;
 
+use AllowDynamicProperties;
 use Automattic\WooCommerce\Admin\Features\Features;
 
 defined( 'ABSPATH' ) || exit;
 
-use \Automattic\WooCommerce\Internal\Admin\Loader;
+use Automattic\WooCommerce\Internal\Admin\Loader;
 
 /**
  * Init class.
  *
  * @internal
  */
+#[AllowDynamicProperties]
 class Init {
 	/**
 	 * The single instance of the class.
@@ -37,7 +39,7 @@ class Init {
 	}
 
 	/**
-	 * Boostrap REST API.
+	 * Bootstrap REST API.
 	 */
 	public function __construct() {
 		// Hook in data stores.
@@ -47,6 +49,9 @@ class Init {
 
 		// Add currency symbol to orders endpoint response.
 		add_filter( 'woocommerce_rest_prepare_shop_order_object', array( __CLASS__, 'add_currency_symbol_to_order_response' ) );
+
+		include_once WC_ABSPATH . 'includes/admin/class-wc-admin-upload-downloadable-product.php';
+
 	}
 
 	/**
@@ -87,9 +92,11 @@ class Init {
 			'Automattic\WooCommerce\Admin\API\OnboardingProfile',
 			'Automattic\WooCommerce\Admin\API\OnboardingTasks',
 			'Automattic\WooCommerce\Admin\API\OnboardingThemes',
+			'Automattic\WooCommerce\Admin\API\OnboardingPlugins',
 			'Automattic\WooCommerce\Admin\API\NavigationFavorites',
 			'Automattic\WooCommerce\Admin\API\Taxes',
 			'Automattic\WooCommerce\Admin\API\MobileAppMagicLink',
+			'Automattic\WooCommerce\Admin\API\ShippingPartnerSuggestions',
 		);
 
 		$product_form_controllers = array();
