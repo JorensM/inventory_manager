@@ -1,0 +1,92 @@
+2024-01-29T09:29:27+00:00 CRITICAL Uncaught Error: Call to a member function get_shipping_profiles() on null in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\woo_product_custom_fields.php:165
+Stack trace:
+#0 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(324): woo_product_shipping_custom_fields('')
+#1 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#2 C:\xampp_8\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\views\html-product-data-shipping.php(76): do_action('woocommerce_pro...')
+#4 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\class-wc-meta-box-product-data.php(44): include('C:\\xampp_8\\htdo...')
+#5 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\views\html-product-data-panel.php(52): WC_Meta_Box_Product_Data::output_tabs()
+#6 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\class-wc-meta-box-product-data.php(33): include('C:\\xampp_8\\htdo...')
+#7 C:\xampp_8\htdocs\inventory_manager\wp-admin\includes\template.php(1456): WC_Meta_Box_Product_Data::output(Object(WP_Post), Array)
+#8 C:\xampp_8\htdocs\inventory_manager\wp-admin\edit-form-advanced.php(714): do_meta_boxes(Object(WP_Screen), 'normal', Object(WP_Post))
+#9 C:\xampp_8\htdocs\inventory_manager\wp-admin\post-new.php(75): require('C:\\xampp_8\\htdo...')
+#10 {main}
+  thrown in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\woo_product_custom_fields.php on line 165
+
+2024-01-29T09:31:03+00:00 CRITICAL Uncaught Error: Call to a member function get_shipping_profiles() on null in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\woo_product_custom_fields.php:165
+Stack trace:
+#0 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(324): woo_product_shipping_custom_fields('')
+#1 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#2 C:\xampp_8\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\views\html-product-data-shipping.php(76): do_action('woocommerce_pro...')
+#4 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\class-wc-meta-box-product-data.php(44): include('C:\\xampp_8\\htdo...')
+#5 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\views\html-product-data-panel.php(52): WC_Meta_Box_Product_Data::output_tabs()
+#6 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\class-wc-meta-box-product-data.php(33): include('C:\\xampp_8\\htdo...')
+#7 C:\xampp_8\htdocs\inventory_manager\wp-admin\includes\template.php(1456): WC_Meta_Box_Product_Data::output(Object(WP_Post), Array)
+#8 C:\xampp_8\htdocs\inventory_manager\wp-admin\edit-form-advanced.php(714): do_meta_boxes(Object(WP_Screen), 'normal', Object(WP_Post))
+#9 C:\xampp_8\htdocs\inventory_manager\wp-admin\post.php(206): require('C:\\xampp_8\\htdo...')
+#10 {main}
+  thrown in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\woo_product_custom_fields.php on line 165
+
+2024-01-29T09:33:09+00:00 CRITICAL Uncaught Error: Call to a member function get_listing() on null in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\custom_js.php:107
+Stack trace:
+#0 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\custom_js.php(18): custom_js_product()
+#1 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(324): custom_js('')
+#2 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#3 C:\xampp_8\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#4 C:\xampp_8\htdocs\inventory_manager\wp-admin\admin-footer.php(78): do_action('admin_footer', '')
+#5 C:\xampp_8\htdocs\inventory_manager\wp-admin\post.php(369): require_once('C:\\xampp_8\\htdo...')
+#6 {main}
+  thrown in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\custom_js.php on line 107
+
+2024-01-29T09:34:46+00:00 CRITICAL Uncaught Error: Call to a member function get_listing() on null in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\custom_js.php:107
+Stack trace:
+#0 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\custom_js.php(18): custom_js_product()
+#1 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(324): custom_js('')
+#2 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#3 C:\xampp_8\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#4 C:\xampp_8\htdocs\inventory_manager\wp-admin\admin-footer.php(78): do_action('admin_footer', '')
+#5 C:\xampp_8\htdocs\inventory_manager\wp-admin\post.php(369): require_once('C:\\xampp_8\\htdo...')
+#6 {main}
+  thrown in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\custom_js.php on line 107
+
+2024-01-29T09:35:00+00:00 CRITICAL Uncaught Error: Call to a member function get_listing() on null in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\custom_js.php:107
+Stack trace:
+#0 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\custom_js.php(18): custom_js_product()
+#1 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(324): custom_js('')
+#2 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#3 C:\xampp_8\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#4 C:\xampp_8\htdocs\inventory_manager\wp-admin\admin-footer.php(78): do_action('admin_footer', '')
+#5 C:\xampp_8\htdocs\inventory_manager\wp-admin\post.php(369): require_once('C:\\xampp_8\\htdo...')
+#6 {main}
+  thrown in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\custom_js.php on line 107
+
+2024-01-29T09:36:34+00:00 CRITICAL Uncaught Error: Call to undefined function get_current_screen() in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\product_events.php:101
+Stack trace:
+#0 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(324): on_product_status_change('publish', 'new', Object(WP_Post))
+#1 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters(NULL, Array)
+#2 C:\xampp_8\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp_8\htdocs\inventory_manager\wp-includes\post.php(5390): do_action('transition_post...', 'publish', 'new', Object(WP_Post))
+#4 C:\xampp_8\htdocs\inventory_manager\wp-includes\post.php(4650): wp_transition_post_status('publish', 'new', Object(WP_Post))
+#5 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-navigation-fallback.php(276): wp_insert_post(Array, true)
+#6 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-navigation-fallback.php(94): WP_Navigation_Fallback::create_default_fallback()
+#7 C:\xampp_8\htdocs\inventory_manager\wp-includes\blocks\navigation.php(323): WP_Navigation_Fallback::get_fallback()
+#8 C:\xampp_8\htdocs\inventory_manager\wp-includes\blocks\navigation.php(491): block_core_navigation_get_fallback_blocks()
+#9 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-block.php(258): render_block_core_navigation(Array, '', Object(WP_Block))
+#10 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-block.php(244): WP_Block->render()
+#11 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-block.php(244): WP_Block->render()
+#12 C:\xampp_8\htdocs\inventory_manager\wp-includes\blocks.php(1484): WP_Block->render()
+#13 C:\xampp_8\htdocs\inventory_manager\wp-includes\blocks.php(1522): render_block(Array)
+#14 C:\xampp_8\htdocs\inventory_manager\wp-includes\blocks\template-part.php(144): do_blocks('<!-- wp:group {...')
+#15 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\src\Blocks\BlockTemplatesController.php(171): render_block_core_template_part(Array)
+#16 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-block.php(258): Automattic\WooCommerce\Blocks\BlockTemplatesController->render_woocommerce_template_part(Array, '', Object(WP_Block))
+#17 C:\xampp_8\htdocs\inventory_manager\wp-includes\blocks.php(1484): WP_Block->render()
+#18 C:\xampp_8\htdocs\inventory_manager\wp-includes\blocks.php(1522): render_block(Array)
+#19 C:\xampp_8\htdocs\inventory_manager\wp-includes\block-template.php(263): do_blocks('<!-- wp:templat...')
+#20 C:\xampp_8\htdocs\inventory_manager\wp-includes\template-canvas.php(12): get_the_block_template_html()
+#21 C:\xampp_8\htdocs\inventory_manager\wp-includes\template-loader.php(106): include('C:\\xampp_8\\htdo...')
+#22 C:\xampp_8\htdocs\inventory_manager\wp-blog-header.php(19): require_once('C:\\xampp_8\\htdo...')
+#23 C:\xampp_8\htdocs\inventory_manager\index.php(17): require('C:\\xampp_8\\htdo...')
+#24 {main}
+  thrown in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\product_events.php on line 101
+

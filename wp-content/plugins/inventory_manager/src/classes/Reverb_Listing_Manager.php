@@ -15,7 +15,7 @@
         function __construct( array $auth_data, string $mode ) {
             //Assign params to member variables
             $this->token = $auth_data['token'];
-            $this->$mode = $mode;
+            $this->mode = $mode;
             
 
             //Determine which API url to use based on mode
@@ -70,8 +70,9 @@
                 'Content-Type: application/hal+json',
                 'Accept: application/hal+json',
                 'Accept-Version: 3.0' ,
-                'Authorization: Bearer $this->token'
+                "Authorization: Bearer {$this->token}"
             ];
+            // print_r($headers);
             //Set curl options
             curl_setopt( $curl, CURLOPT_HTTPHEADER, $headers );
             curl_setopt( $curl, CURLOPT_CUSTOMREQUEST, $request_method );

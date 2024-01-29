@@ -43,6 +43,7 @@
             //"options-general.php",
             "woocommerce",
             "woocommerce-marketing",
+            "wc-admin&path=/wc-pay-welcome-page",
             "wc-admin&path=/analytics/overview",
             "plugins.php"
 

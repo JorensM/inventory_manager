@@ -161,29 +161,35 @@
         
         echo '<div class="options_group">';
             //--Reverb shipping profile--//
-            $reverb_shipping_profile_options = [];
-            $reverb_shipping_profiles = $listing_managers->getManager('reverb')->get_shipping_profiles();
-            foreach ( $reverb_shipping_profiles as $profile ) {
-                $reverb_shipping_profile_options[ $profile['id'] ] = __( $profile['name'], $text_domain );
-            }
-            woocommerce_wp_select( array (
-                'id'      => 'reverb_shipping_profile',
-                'label'   => __('<b>Reverb</b> shipping profile', $text_domain),
-                'options' => $reverb_shipping_profile_options
-            ) );
-            
-            //--eBay shipping profile--//
-            $ebay_shipping_profile_options = [];
-            $ebay_shipping_profiles = $listing_managers->getManager('ebay')->get_shipping_profiles();
 
-            foreach ( $ebay_shipping_profiles as $profile ) {
-                $ebay_shipping_profile_options[ $profile['fulfillmentPolicyId'] ] = $profile['name'];
+            if($listing_managers->getManager(('reverb'))) {
+                $reverb_shipping_profile_options = [];
+                $reverb_shipping_profiles = $listing_managers->getManager('reverb')->get_shipping_profiles();
+                foreach ( $reverb_shipping_profiles as $profile ) {
+                    $reverb_shipping_profile_options[ $profile['id'] ] = __( $profile['name'], $text_domain );
+                }
+                woocommerce_wp_select( array (
+                    'id'      => 'reverb_shipping_profile',
+                    'label'   => __('<b>Reverb</b> shipping profile', $text_domain),
+                    'options' => $reverb_shipping_profile_options
+                ) );
             }
-            woocommerce_wp_select( array (
-                'id'      => 'ebay_shipping_profile',
-                'label'   => __('<b>eBay</b> shipping profile', $text_domain),
-                'options' => $ebay_shipping_profile_options
-            ) );
+            
+            if($listing_managers->getManager(('ebay'))) {
+                //--eBay shipping profile--//
+                $ebay_shipping_profile_options = [];
+                $ebay_shipping_profiles = $listing_managers->getManager('ebay')->get_shipping_profiles();
+
+                foreach ( $ebay_shipping_profiles as $profile ) {
+                    $ebay_shipping_profile_options[ $profile['fulfillmentPolicyId'] ] = $profile['name'];
+                }
+                woocommerce_wp_select( array (
+                    'id'      => 'ebay_shipping_profile',
+                    'label'   => __('<b>eBay</b> shipping profile', $text_domain),
+                    'options' => $ebay_shipping_profile_options
+                ) );
+            }
+            
         echo '</div>';
     }
     add_action( 'woocommerce_product_options_shipping', 'woo_product_shipping_custom_fields');

@@ -73,3 +73,7 @@
 <b>admin: </b>Updated product <a href='http://localhost/inventory_manager/wp-admin/post.php?post=329&action=edit'>eeeaabcddcceedd</a>
 <b>admin: </b>Updated product <a href='http://localhost/inventory_manager/wp-admin/post.php?post=329&action=edit'>eeeaabcddcceedd</a>
 <b>admin: </b>Updated product <a href='http://localhost/inventory_manager/wp-admin/post.php?post=329&action=edit'>eeeaabcddcceedd</a>
+[29-Jan-2024 09:30:14 UTC] <b>admin: </b>Created product <a href='http://localhost/inventory_manager/wp-admin/post.php?post=13&action=edit'>Test product #1</a> with status <b>draft</b>
+[29-Jan-2024 10:06:44 UTC] <b>General: </b>Status of product <a href='http://localhost/inventory_manager/wp-admin/post.php?post=13&action=edit'>Test product #1</a> changed from <b>draft</b> to <b>publish</b>
+[29-Jan-2024 10:07:29 UTC] <b>Reverb: </b>Created $reverb_link for product $product_link
+[29-Jan-2024 10:09:00 UTC] <b>Reverb: </b>Created $reverb_link for product $product_link

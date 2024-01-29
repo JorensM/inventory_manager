@@ -104,8 +104,8 @@
         $product_reverb_url = $product->get_meta('reverb_link');
 
         //Get eBay and Reverb listings
-        $ebay_listing = $listing_managers->getManager('ebay')->get_listing($product);
-        $reverb_listing = $listing_managers->getManager('reverb')->get_listing($product);
+        $ebay_listing = $listing_managers->getManager('ebay')?->get_listing($product);
+        $reverb_listing = $listing_managers->getManager('reverb')?->get_listing($product);
 
         //Strings for displaying status for different platforms
         $ebay_status = '';

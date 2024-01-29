@@ -275,6 +275,7 @@
 
         if ( $reverb_manager ) {
             $reverb_user = $reverb_manager->get_user();
+            
         }
         // echo '<pre>';
         // print_r( $reverb_user );
