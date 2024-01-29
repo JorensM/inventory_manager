@@ -80,7 +80,7 @@ $table_prefix = 'wp_';
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
 define( 'WP_DEBUG', true );
-define( 'WP_DEBUG_LOG', true );
+define( 'WP_DEBUG_LOG', false );
 define( 'WP_DEBUG_DISPLAY', true );
 @ini_set( 'display_errors', 1 );
 
