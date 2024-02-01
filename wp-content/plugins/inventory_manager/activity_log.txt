@@ -77,3 +77,311 @@
 [29-Jan-2024 10:06:44 UTC] <b>General: </b>Status of product <a href='http://localhost/inventory_manager/wp-admin/post.php?post=13&action=edit'>Test product #1</a> changed from <b>draft</b> to <b>publish</b>
 [29-Jan-2024 10:07:29 UTC] <b>Reverb: </b>Created $reverb_link for product $product_link
 [29-Jan-2024 10:09:00 UTC] <b>Reverb: </b>Created $reverb_link for product $product_link
+[29-Jan-2024 11:03:51 UTC] <b>Reverb: </b>Created $reverb_link for product $product_link
+[29-Jan-2024 11:05:03 UTC] <b>Reverb: </b>Array
+(
+    [message] => Make for English can't be blank.
+    [listing] => Array
+        (
+            [make] => 
+            [model] => 
+            [finish] => 
+            [year] => 
+            [title] => Test product #1
+            [description] => abcd
+            [price] => Array
+                (
+                    [amount] => 50.00
+                    [amount_cents] => 5000
+                    [currency] => USD
+                    [symbol] => $
+                    [display] => $50
+                )
+
+            [inventory] => 0
+            [has_inventory] => 
+            [offers_enabled] => 
+            [auction] => 
+            [categories] => Array
+                (
+                    [0] => Array
+                        (
+                            [uuid] => cdadd9b5-9d6d-4193-b0ee-b94d9ffd02ec
+                            [full_name] => Accessories / Amp Covers
+                        )
+
+                )
+
+            [listing_currency] => USD
+            [buyer_price] => Array
+                (
+                    [amount] => 46.22
+                    [amount_cents] => 4622
+                    [currency] => EUR
+                    [symbol] => €
+                    [display] => €46.22
+                    [tax_included_hint] => 
+                    [tax_included] => 
+                    [tax_included_rate] => 0
+                )
+
+            [seller_price] => Array
+                (
+                    [amount] => 50.00
+                    [amount_cents] => 5000
+                    [currency] => USD
+                    [symbol] => $
+                    [display] => $50
+                )
+
+            [state] => Array
+                (
+                    [slug] => draft
+                    [description] => Draft
+                )
+
+            [wanted] => 
+            [accepted_payment_methods] => Array
+                (
+                )
+
+            [location] => Array
+                (
+                    [country_code] => LT
+                    [display_location] => Lithuania
+                )
+
+            [draft] => 1
+            [live] => 
+            [local_pickup_only] => 1
+            [cloudinary_photos] => Array
+                (
+                )
+
+            [shop] => Array
+                (
+                    [feedback_count] => 0
+                    [preferred_seller] => 
+                    [rating_percentage] => 0
+                )
+
+            [stats] => Array
+                (
+                    [views] => 0
+                    [watches] => 0
+                )
+
+            [offer_count] => 0
+            [shipping_policy] => I will ship with tracking to the listed regions. To negotiate shipping rates to other locations, please send me a message.
+            [payment_policy] => To negotiate price, shipping, or payment options, please send a message or make an offer.
+            [sold_as_is] => 
+            [same_day_shipping_ineligible] => 
+            [return_policy] => Array
+                (
+                )
+
+            [videos] => Array
+                (
+                )
+
+            [is_my_listing] => 
+            [photos] => Array
+                (
+                )
+
+            [shipping] => Array
+                (
+                    [local] => 1
+                    [rates] => Array
+                        (
+                        )
+
+                    [initial_offer_rate] => Array
+                        (
+                            [region_code] => 
+                            [rate] => Array
+                                (
+                                    [original] => Array
+                                        (
+                                            [amount] => 0.00
+                                            [amount_cents] => 0
+                                            [currency] => USD
+                                            [symbol] => $
+                                            [display] => FREE
+                                        )
+
+                                    [display] => Array
+                                        (
+                                            [amount] => 0.00
+                                            [amount_cents] => 0
+                                            [currency] => USD
+                                            [symbol] => $
+                                            [display] => FREE
+                                        )
+
+                                )
+
+                            [carrier_calculated] => 
+                            [regional] => 
+                            [destination_postal_code_needed] => 
+                        )
+
+                    [free_expedited_shipping] => 
+                )
+
+            [seller] => Array
+                (
+                    [paypal_email] => 
+                )
+
+            [_links] => Array
+                (
+                    [photo] => Array
+                        (
+                            [href] => https://static-sandbox.reverb-assets.com/assets/products/blank_medium-8120dba69a21448fa293fc2df8f8ce0265daa804f2be9a7413732a58d1b833f8.jpg
+                        )
+
+                    [self] => Array
+                        (
+                            [href] => https://sandbox.reverb.com/api/listings/-test-product-1
+                        )
+
+                    [update] => Array
+                        (
+                            [method] => PUT
+                            [href] => https://sandbox.reverb.com/api/listings/-test-product-1
+                        )
+
+                    [end] => Array
+                        (
+                            [method] => PUT
+                            [href] => https://sandbox.reverb.com/api/my/listings/-test-product-1/state/end
+                        )
+
+                    [want] => Array
+                        (
+                            [method] => PUT
+                            [href] => https://sandbox.reverb.com/api/wants/-test-product-1
+                        )
+
+                    [unwant] => Array
+                        (
+                            [method] => DELETE
+                            [href] => https://sandbox.reverb.com/api/wants/-test-product-1
+                        )
+
+                    [edit] => Array
+                        (
+                            [href] => https://sandbox.reverb.com/api/listings/-test-product-1/edit
+                        )
+
+                    [web] => Array
+                        (
+                            [href] => https://sandbox.reverb.com/item/-test-product-1
+                        )
+
+                    [cart] => Array
+                        (
+                            [href] => https://sandbox.reverb.com/api/cart/
+                        )
+
+                    [flag] => Array
+                        (
+                            [href] => https://sandbox.reverb.com/api/listings/-test-product-1/flag
+                        )
+
+                    [contact_seller] => Array
+                        (
+                            [web] => Array
+                                (
+                                    [href] => https://sandbox.reverb.com/en-lt/my/messages/new?item=-test-product-1&recipient_uuid=7ff5d38d-a67f-490f-9475-16d36cd1bc9f
+                                )
+
+                        )
+
+                    [conversations] => Array
+                        (
+                            [href] => https://sandbox.reverb.com/api/listings//conversations
+                        )
+
+                    [sales] => Array
+                        (
+                            [href] => https://sandbox.reverb.com/api/listings//sales
+                        )
+
+                )
+
+        )
+
+    [errors] => Array
+        (
+            [localized_contents.make] => Array
+                (
+                    [0] => for English can't be blank.
+                )
+
+            [localized_contents.model] => Array
+                (
+                    [0] => for English can't be blank.
+                )
+
+            [make] => Array
+                (
+                    [0] => can't be blank
+                )
+
+            [model] => Array
+                (
+                    [0] => can't be blank
+                )
+
+            [base] => Array
+                (
+                    [0] => Make for English can't be blank.
+                )
+
+        )
+
+    [warnings] => Array
+        (
+        )
+
+)
+
+[29-Jan-2024 11:05:03 UTC] <b>Reverb: </b>Created $reverb_link for product $product_link
+[29-Jan-2024 11:08:46 UTC] <b>Reverb: </b>Array
+(
+    [localized_contents.make] => Array
+        (
+            [0] => for English can't be blank.
+        )
+
+    [localized_contents.model] => Array
+        (
+            [0] => for English can't be blank.
+        )
+
+    [make] => Array
+        (
+            [0] => can't be blank
+        )
+
+    [model] => Array
+        (
+            [0] => can't be blank
+        )
+
+    [base] => Array
+        (
+            [0] => Make for English can't be blank.
+        )
+
+)
+
+[29-Jan-2024 11:08:46 UTC] <b>Reverb: </b>Array
+(
+)
+
+[29-Jan-2024 11:08:46 UTC] <b>Reverb: </b>Created $reverb_link for product $product_link
+[29-Jan-2024 11:13:38 UTC] <b>Reverb: </b>Created <a href='https://sandbox.reverb.com/item/-test-product-1'>listing</a> for product <a href='http://localhost/inventory_manager/wp-admin/post.php?post=13&action=edit'>Test product #1</a>
+[29-Jan-2024 11:24:20 UTC] <b>General: </b>Status of product <a href='http://localhost/inventory_manager/wp-admin/post.php?post=13&action=edit'>Test product #1</a> changed from <b>publish</b> to <b>draft</b>

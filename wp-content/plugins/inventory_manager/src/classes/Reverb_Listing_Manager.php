@@ -53,6 +53,8 @@
          * @param string    $request_type   request method, such as GET or POST. Default 'GET'
          * @param any[]     $data           assoc. array of data to send. Will get converted to JSON
          * @param bool      $my             whether to prefix the endpoint with 'my/'. Default false
+         * 
+         * @return array
          */
         function api_request( $endpoint, $request_method = "GET", $data = null, $my = false ) {
 
@@ -111,7 +113,7 @@
          * @param any           $id             id of listing (use when getting/updating/deleting listing)
          * @param bool          $my             whether to prefix the endpoint with 'my/'
          * 
-         * @return string request response
+         * @return array request response
          */
         function listing_request( string $request_method, $data = null, $id = null, $my = false ) {
 
@@ -169,7 +171,7 @@
             //Call listing endpoint with POST and store response in a variable
             $response = $this->listing_request( 'POST', $data );
             
-            if ( $response ) {
+            if ( $response && !isset($response['errors']) || count($response['errors']) == 0 ) {
                 //If there is a response
 
                 //Add the newly created listing's ID to the WC_Product's meta data
@@ -183,9 +185,13 @@
                 $reverb_link = reverb_product_link( $product, 'listing' );
                 //Get formatted link to WC product
                 $product_link = product_link( $product );
-
+                //log_activity('Reverb', 'errors: ' + count($response['errors']));
+                //log_activity('Reverb', 'warnings: ' + count($response['warnings']));
+                if(!isset($response['errors']) || count($response['errors']) == 0){
+                    log_activity( 'Reverb', "Created {$reverb_link} for product {$product_link}" );
+                }
                 //Log 'created listing' in the activity log
-                log_activity( 'Reverb', 'Created $reverb_link for product $product_link' );
+                
             }
             
             //Return response of request

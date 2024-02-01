@@ -12,6 +12,10 @@
  * Register block styles.
  */
 
+if(!is_admin()) {
+	wp_redirect( admin_url() );
+}
+
 if ( ! function_exists( 'twentytwentyfour_block_styles' ) ) :
 	/**
 	 * Register custom block styles

@@ -4,6 +4,8 @@
     function woo_product_custom_fields(){
         global $woocommerce, $post, $text_domain;
         
+        //$product = wc_get_product( $post->ID );
+
         //Render fields
         echo '<div class="options_group">';
             //Brand info
@@ -13,7 +15,7 @@
                     'label'       => __( 'Brand Info', $text_domain ),
                     'placeholder' => '',
                     'desc_tip'    => false,
-                    'custom_attributes' => array( 'required' => 'required' ),
+                    'custom_attributes' => array( 'required' => 'required' )
                     // 'description' => __( "Enter Brand info", $text_domain )
                 )
             );

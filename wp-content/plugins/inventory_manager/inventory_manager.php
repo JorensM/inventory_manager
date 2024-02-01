@@ -23,6 +23,8 @@ require_once 'src/functions/curl_request.php';
 //Constants
 require_once 'src/const.php' ;
 
+
+
 function check_dependencies() {
     if(!is_plugin_active("woocommerce/woocommerce.php")) {
         Admin_Notice::displayError('Inventory Manager requires WooCommerce to work');
@@ -34,7 +36,17 @@ function on_admin_init() {
     check_dependencies();
 }
 
+// Redirect to admin if on a customer facing page like site homepage
+function maybe_redirect() {
+    if(!is_admin()) {
+        wp_redirect( admin_url() );
+        exit();
+    }
+}
+
 add_action( 'admin_init', 'on_admin_init' );
+add_action( 'init', 'maybe_redirect');
+
 
 
 

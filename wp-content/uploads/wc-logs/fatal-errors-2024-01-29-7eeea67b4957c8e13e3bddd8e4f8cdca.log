@@ -90,3 +90,63 @@ Stack trace:
 #24 {main}
   thrown in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\product_events.php on line 101
 
+2024-01-29T11:20:37+00:00 CRITICAL Uncaught Error: Call to a member function get_meta() on bool in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\woo_product_custom_fields.php:19
+Stack trace:
+#0 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(324): woo_product_custom_fields('')
+#1 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#2 C:\xampp_8\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\views\html-product-data-general.php(206): do_action('woocommerce_pro...')
+#4 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\class-wc-meta-box-product-data.php(42): include('C:\\xampp_8\\htdo...')
+#5 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\views\html-product-data-panel.php(52): WC_Meta_Box_Product_Data::output_tabs()
+#6 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\class-wc-meta-box-product-data.php(33): include('C:\\xampp_8\\htdo...')
+#7 C:\xampp_8\htdocs\inventory_manager\wp-admin\includes\template.php(1456): WC_Meta_Box_Product_Data::output(Object(WP_Post), Array)
+#8 C:\xampp_8\htdocs\inventory_manager\wp-admin\edit-form-advanced.php(714): do_meta_boxes(Object(WP_Screen), 'normal', Object(WP_Post))
+#9 C:\xampp_8\htdocs\inventory_manager\wp-admin\post.php(206): require('C:\\xampp_8\\htdo...')
+#10 {main}
+  thrown in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\woo_product_custom_fields.php on line 19
+
+2024-01-29T11:20:55+00:00 CRITICAL Uncaught Error: Call to a member function get_meta() on bool in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\woo_product_custom_fields.php:20
+Stack trace:
+#0 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(324): woo_product_custom_fields('')
+#1 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#2 C:\xampp_8\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\views\html-product-data-general.php(206): do_action('woocommerce_pro...')
+#4 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\class-wc-meta-box-product-data.php(42): include('C:\\xampp_8\\htdo...')
+#5 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\views\html-product-data-panel.php(52): WC_Meta_Box_Product_Data::output_tabs()
+#6 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\class-wc-meta-box-product-data.php(33): include('C:\\xampp_8\\htdo...')
+#7 C:\xampp_8\htdocs\inventory_manager\wp-admin\includes\template.php(1456): WC_Meta_Box_Product_Data::output(Object(WP_Post), Array)
+#8 C:\xampp_8\htdocs\inventory_manager\wp-admin\edit-form-advanced.php(714): do_meta_boxes(Object(WP_Screen), 'normal', Object(WP_Post))
+#9 C:\xampp_8\htdocs\inventory_manager\wp-admin\post.php(206): require('C:\\xampp_8\\htdo...')
+#10 {main}
+  thrown in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\woo_product_custom_fields.php on line 20
+
+2024-01-29T11:21:10+00:00 CRITICAL Uncaught Error: Call to a member function get_meta() on bool in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\woo_product_custom_fields.php:21
+Stack trace:
+#0 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(324): woo_product_custom_fields('')
+#1 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#2 C:\xampp_8\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\views\html-product-data-general.php(206): do_action('woocommerce_pro...')
+#4 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\class-wc-meta-box-product-data.php(42): include('C:\\xampp_8\\htdo...')
+#5 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\views\html-product-data-panel.php(52): WC_Meta_Box_Product_Data::output_tabs()
+#6 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\class-wc-meta-box-product-data.php(33): include('C:\\xampp_8\\htdo...')
+#7 C:\xampp_8\htdocs\inventory_manager\wp-admin\includes\template.php(1456): WC_Meta_Box_Product_Data::output(Object(WP_Post), Array)
+#8 C:\xampp_8\htdocs\inventory_manager\wp-admin\edit-form-advanced.php(714): do_meta_boxes(Object(WP_Screen), 'normal', Object(WP_Post))
+#9 C:\xampp_8\htdocs\inventory_manager\wp-admin\post.php(206): require('C:\\xampp_8\\htdo...')
+#10 {main}
+  thrown in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\woo_product_custom_fields.php on line 21
+
+2024-01-29T11:21:41+00:00 CRITICAL Uncaught Error: Call to a member function get_meta() on bool in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\woo_product_custom_fields.php:21
+Stack trace:
+#0 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(324): woo_product_custom_fields('')
+#1 C:\xampp_8\htdocs\inventory_manager\wp-includes\class-wp-hook.php(348): WP_Hook->apply_filters('', Array)
+#2 C:\xampp_8\htdocs\inventory_manager\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\views\html-product-data-general.php(206): do_action('woocommerce_pro...')
+#4 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\class-wc-meta-box-product-data.php(42): include('C:\\xampp_8\\htdo...')
+#5 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\views\html-product-data-panel.php(52): WC_Meta_Box_Product_Data::output_tabs()
+#6 C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\woocommerce\includes\admin\meta-boxes\class-wc-meta-box-product-data.php(33): include('C:\\xampp_8\\htdo...')
+#7 C:\xampp_8\htdocs\inventory_manager\wp-admin\includes\template.php(1456): WC_Meta_Box_Product_Data::output(Object(WP_Post), Array)
+#8 C:\xampp_8\htdocs\inventory_manager\wp-admin\edit-form-advanced.php(714): do_meta_boxes(Object(WP_Screen), 'normal', Object(WP_Post))
+#9 C:\xampp_8\htdocs\inventory_manager\wp-admin\post.php(206): require('C:\\xampp_8\\htdo...')
+#10 {main}
+  thrown in C:\xampp_8\htdocs\inventory_manager\wp-content\plugins\inventory_manager\src\functions\actions\woo_product_custom_fields.php on line 21
+
